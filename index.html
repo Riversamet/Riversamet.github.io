@@ -1,0 +1,551 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Your Name — Data Scientist</title>
+<meta name="description" content="Data scientist working on forecasting, causal inference, and machine learning systems. Projects, resume, and contact.">
+
+<!--
+  ============================================================
+  THINGS TO REPLACE (search for these strings)
+  ============================================================
+  "Your Name"            -> your name, everywhere incl. <title>
+  "YN"                   -> your initials (nav mark)
+  "you@email.com"        -> your email (3 places)
+  "github.com/yourhandle"    -> your GitHub
+  "linkedin.com/in/yourhandle" -> your LinkedIn
+  "resume.pdf"           -> drop your PDF next to this file with that name
+  "[City, State]"        -> where you're based
+  FORMSPREE_ID           -> free endpoint from formspree.io (contact form)
+  headshot.jpg           -> your photo in the About section
+  Project cards          -> the four <article class="proj"> blocks
+  ============================================================
+-->
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,400;12..96,600;12..96,700&family=IBM+Plex+Mono:wght@400;500&family=Public+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+
+<style>
+:root{
+  --paper:#ffffff;
+  --paper-2:#f7faf4;
+  --wash:#e8f1e1;
+  --wash-2:#f0f6ea;
+  --line:#dee7d6;
+  --ink:#14170f;
+  --ink-2:#464f40;
+  --muted:#78826f;
+  --green:#4c8b3f;
+  --green-deep:#2f5d2a;
+
+  --display:"Bricolage Grotesque",system-ui,sans-serif;
+  --body:"Public Sans",system-ui,sans-serif;
+  --mono:"IBM Plex Mono",ui-monospace,monospace;
+
+  --pad:clamp(20px,5vw,64px);
+  --maxw:1120px;
+}
+
+*{box-sizing:border-box}
+html{scroll-behavior:smooth;scroll-padding-top:76px}
+body{
+  margin:0;background:var(--paper);color:var(--ink);
+  font-family:var(--body);font-size:17px;line-height:1.65;
+  -webkit-font-smoothing:antialiased;
+}
+img{max-width:100%;display:block}
+a{color:var(--green-deep);text-decoration-thickness:1px;text-underline-offset:3px}
+
+:focus-visible{outline:2px solid var(--green);outline-offset:3px;border-radius:2px}
+
+.wrap{max-width:var(--maxw);margin:0 auto;padding-inline:var(--pad)}
+
+/* ---------- type ---------- */
+h1,h2,h3{font-family:var(--display);font-weight:600;letter-spacing:-.02em;line-height:1.05;margin:0}
+.eyebrow{
+  font-family:var(--mono);font-size:12px;letter-spacing:.14em;text-transform:uppercase;
+  color:var(--green-deep);margin:0 0 18px;display:flex;align-items:center;gap:10px;
+}
+.eyebrow::after{content:"";flex:1;height:1px;background:var(--line);max-width:120px}
+h2{font-size:clamp(30px,4.2vw,46px)}
+.lede{font-size:clamp(17px,1.5vw,19px);color:var(--ink-2);max-width:62ch}
+
+/* ---------- nav ---------- */
+header{
+  position:sticky;top:0;z-index:50;background:rgba(255,255,255,.86);
+  backdrop-filter:blur(10px);border-bottom:1px solid transparent;transition:border-color .25s;
+}
+header.stuck{border-bottom-color:var(--line)}
+.nav{max-width:var(--maxw);margin:0 auto;padding:14px var(--pad);display:flex;align-items:center;gap:20px}
+.mark{
+  font-family:var(--mono);font-weight:500;font-size:13px;letter-spacing:.08em;
+  color:var(--ink);text-decoration:none;border:1px solid var(--line);
+  padding:7px 10px;border-radius:6px;background:var(--paper-2);
+}
+.nav-links{margin-left:auto;display:flex;gap:26px}
+.nav-links a{
+  font-size:14.5px;color:var(--ink-2);text-decoration:none;position:relative;padding:4px 0;
+}
+.nav-links a::after{
+  content:"";position:absolute;left:0;right:100%;bottom:0;height:1.5px;
+  background:var(--green);transition:right .28s ease;
+}
+.nav-links a:hover::after,.nav-links a.active::after{right:0}
+.nav-links a.active{color:var(--ink)}
+
+.btn{
+  display:inline-flex;align-items:center;gap:8px;font-size:14.5px;font-weight:500;
+  padding:10px 18px;border-radius:999px;text-decoration:none;border:1px solid transparent;
+  transition:transform .15s ease,background .2s ease,border-color .2s ease;
+}
+.btn:active{transform:translateY(1px)}
+.btn-solid{background:var(--green);color:#fff}
+.btn-solid:hover{background:var(--green-deep)}
+.btn-ghost{border-color:var(--line);color:var(--ink);background:var(--paper)}
+.btn-ghost:hover{border-color:var(--green);background:var(--wash-2)}
+.nav .btn{padding:8px 15px}
+
+/* ---------- hero ---------- */
+.hero{
+  display:grid;grid-template-columns:1.05fr .95fr;gap:56px;align-items:center;
+  padding:clamp(56px,9vw,104px) 0 clamp(56px,8vw,88px);
+}
+.hero h1{font-size:clamp(46px,7.4vw,84px);letter-spacing:-.035em;margin-bottom:22px}
+.hero h1 em{font-style:normal;color:var(--green)}
+.hero .lede{margin:0 0 30px}
+.cta-row{display:flex;flex-wrap:wrap;gap:12px;margin-bottom:30px}
+.sociallinks{display:flex;flex-wrap:wrap;gap:22px;font-family:var(--mono);font-size:13px}
+.sociallinks a{color:var(--ink-2);text-decoration:none;display:inline-flex;align-items:center;gap:7px}
+.sociallinks a:hover{color:var(--green-deep)}
+.sociallinks svg{width:15px;height:15px;fill:currentColor}
+
+/* signature: scatter + fit line */
+.plot{position:relative;background:var(--paper-2);border:1px solid var(--line);border-radius:14px;padding:18px}
+.plot figcaption{
+  font-family:var(--mono);font-size:11px;letter-spacing:.1em;text-transform:uppercase;
+  color:var(--muted);display:flex;justify-content:space-between;margin-top:10px;
+}
+.plot svg{width:100%;height:auto;display:block;overflow:visible}
+.dot{fill:var(--green);opacity:0;animation:pop .5s ease forwards}
+.dot.hi{fill:var(--green-deep)}
+@keyframes pop{from{opacity:0;transform:scale(.2)}to{opacity:.62;transform:scale(1)}}
+.fit{
+  fill:none;stroke:var(--green-deep);stroke-width:2.25;stroke-linecap:round;
+  stroke-dasharray:600;stroke-dashoffset:600;animation:draw 1.5s .55s cubic-bezier(.65,0,.35,1) forwards;
+}
+@keyframes draw{to{stroke-dashoffset:0}}
+.grid line{stroke:var(--line)}
+
+/* ---------- sections ---------- */
+section{padding:clamp(64px,9vw,110px) 0;border-top:1px solid var(--line)}
+#contact{border-top:none}
+
+/* about */
+.about{display:grid;grid-template-columns:300px 1fr;gap:52px;align-items:start}
+.portrait{border-radius:14px;border:1px solid var(--line);aspect-ratio:4/5;object-fit:cover;width:100%;background:var(--wash-2)}
+.about p{margin:0 0 18px;color:var(--ink-2)}
+.about p:first-of-type{color:var(--ink)}
+
+.stack{margin-top:38px;display:grid;grid-template-columns:repeat(auto-fit,minmax(190px,1fr));gap:26px}
+.stack h3{font-family:var(--mono);font-size:11.5px;font-weight:500;letter-spacing:.12em;text-transform:uppercase;color:var(--green-deep);margin-bottom:12px}
+.stack ul{list-style:none;margin:0;padding:0;font-size:15px;color:var(--ink-2)}
+.stack li{padding:3px 0}
+
+/* projects */
+.proj-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(320px,1fr));gap:22px;margin-top:44px}
+.proj{
+  border:1px solid var(--line);border-radius:14px;padding:26px;background:var(--paper);
+  display:flex;flex-direction:column;transition:border-color .22s,background .22s,transform .22s;
+}
+.proj:hover{border-color:var(--green);background:var(--wash-2);transform:translateY(-3px)}
+.proj-top{display:flex;justify-content:space-between;align-items:baseline;gap:14px;margin-bottom:14px}
+.proj-top span{font-family:var(--mono);font-size:11px;letter-spacing:.1em;text-transform:uppercase;color:var(--muted);white-space:nowrap}
+.proj h3{font-size:22px}
+.proj p{font-size:15.5px;color:var(--ink-2);margin:0 0 20px}
+.result{
+  font-family:var(--mono);font-size:12.5px;color:var(--green-deep);background:var(--wash);
+  border-radius:6px;padding:9px 12px;margin:0 0 20px;line-height:1.5;
+}
+.tags{display:flex;flex-wrap:wrap;gap:7px;margin:0 0 20px;padding:0;list-style:none}
+.tags li{font-family:var(--mono);font-size:11.5px;color:var(--ink-2);border:1px solid var(--line);border-radius:5px;padding:3px 8px;background:var(--paper)}
+.proj-links{margin-top:auto;display:flex;gap:18px;font-size:14px;font-weight:500}
+.proj-links a{text-decoration:none;display:inline-flex;align-items:center;gap:6px}
+.proj-links a:hover{text-decoration:underline}
+
+/* experience */
+.xp{margin-top:44px;display:grid;gap:0}
+.xp-row{
+  display:grid;grid-template-columns:170px 1fr;gap:34px;
+  padding:26px 0;border-bottom:1px solid var(--line);
+}
+.xp-row:first-child{border-top:1px solid var(--line)}
+.xp-when{font-family:var(--mono);font-size:12.5px;color:var(--muted);letter-spacing:.03em;padding-top:4px}
+.xp h3{font-size:19px;margin-bottom:3px}
+.xp-org{font-size:14.5px;color:var(--green-deep);margin:0 0 10px}
+.xp-body{font-size:15.5px;color:var(--ink-2);margin:0}
+
+/* contact */
+#contact{background:var(--wash-2);border-top:1px solid var(--line)}
+.contact-grid{display:grid;grid-template-columns:1fr 1fr;gap:56px;align-items:start;margin-top:36px}
+.big-mail{
+  font-family:var(--display);font-size:clamp(24px,3.2vw,34px);font-weight:600;letter-spacing:-.02em;
+  color:var(--ink);text-decoration:none;display:inline-block;border-bottom:2px solid var(--green);padding-bottom:3px;
+}
+.big-mail:hover{color:var(--green-deep)}
+form{display:grid;gap:14px}
+label{font-family:var(--mono);font-size:11.5px;letter-spacing:.1em;text-transform:uppercase;color:var(--green-deep);display:block;margin-bottom:6px}
+input,textarea{
+  width:100%;font-family:var(--body);font-size:16px;color:var(--ink);
+  background:var(--paper);border:1px solid var(--line);border-radius:9px;padding:12px 14px;
+}
+input:focus,textarea:focus{border-color:var(--green);outline:none;box-shadow:0 0 0 3px rgba(76,139,63,.13)}
+textarea{resize:vertical;min-height:120px}
+form button{border:none;cursor:pointer;font-family:var(--body);justify-self:start}
+.formnote{font-size:13.5px;color:var(--muted);margin:0}
+
+footer{
+  border-top:1px solid var(--line);background:var(--paper);
+  padding:26px 0;font-family:var(--mono);font-size:12px;color:var(--muted);
+}
+.foot{display:flex;flex-wrap:wrap;gap:16px;justify-content:space-between;align-items:center}
+.foot a{color:var(--muted);text-decoration:none}
+.foot a:hover{color:var(--green-deep)}
+
+/* reveal */
+.rv{opacity:0;transform:translateY(16px);transition:opacity .6s ease,transform .6s ease}
+.rv.in{opacity:1;transform:none}
+
+/* ---------- responsive ---------- */
+@media (max-width:900px){
+  .hero{grid-template-columns:1fr;gap:40px}
+  .about{grid-template-columns:1fr;gap:32px}
+  .portrait{max-width:260px}
+  .contact-grid{grid-template-columns:1fr;gap:36px}
+  .nav-links{display:none}
+}
+@media (max-width:560px){
+  body{font-size:16px}
+  .xp-row{grid-template-columns:1fr;gap:8px}
+  .xp-when{padding-top:0}
+}
+@media (prefers-reduced-motion:reduce){
+  html{scroll-behavior:auto}
+  *,*::before,*::after{animation-duration:.001ms!important;transition-duration:.001ms!important}
+  .dot{opacity:.62}
+  .fit{stroke-dashoffset:0}
+  .rv{opacity:1;transform:none}
+}
+</style>
+</head>
+<body>
+
+<header id="top">
+  <nav class="nav">
+    <a class="mark" href="#top" aria-label="Back to top">YN</a>
+    <div class="nav-links">
+      <a href="#about">About</a>
+      <a href="#projects">Projects</a>
+      <a href="#experience">Experience</a>
+      <a href="#contact">Contact</a>
+    </div>
+    <a class="btn btn-solid" href="resume.pdf" download>
+      <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+      Resume
+    </a>
+  </nav>
+</header>
+
+<main>
+
+<!-- ============ HERO ============ -->
+<div class="wrap">
+  <div class="hero">
+    <div>
+      <p class="eyebrow">Data Scientist &middot; [City, State]</p>
+      <h1>Your Name</h1>
+      <p class="lede">I build models that hold up outside the notebook — forecasting, causal inference, and the pipelines that keep them running in production. Currently looking for a full-time data science role.</p>
+      <div class="cta-row">
+        <a class="btn btn-solid" href="resume.pdf" download>Download resume</a>
+        <a class="btn btn-ghost" href="#projects">See projects</a>
+      </div>
+      <div class="sociallinks">
+        <a href="https://github.com/yourhandle" target="_blank" rel="noopener">
+          <svg viewBox="0 0 24 24"><path d="M12 .5C5.7.5.5 5.7.5 12c0 5.1 3.3 9.4 7.9 10.9.6.1.8-.2.8-.6v-2c-3.2.7-3.9-1.5-3.9-1.5-.5-1.3-1.3-1.7-1.3-1.7-1.1-.7.1-.7.1-.7 1.2.1 1.8 1.2 1.8 1.2 1 1.8 2.7 1.3 3.4 1 .1-.8.4-1.3.7-1.6-2.6-.3-5.3-1.3-5.3-5.8 0-1.3.5-2.3 1.2-3.1-.1-.3-.5-1.5.1-3.1 0 0 1-.3 3.3 1.2a11.3 11.3 0 0 1 6 0c2.3-1.5 3.3-1.2 3.3-1.2.6 1.6.2 2.8.1 3.1.8.8 1.2 1.8 1.2 3.1 0 4.5-2.7 5.5-5.3 5.8.4.4.8 1.1.8 2.2v3.3c0 .4.2.7.8.6 4.6-1.5 7.9-5.8 7.9-10.9C23.5 5.7 18.3.5 12 .5z"/></svg>
+          GitHub
+        </a>
+        <a href="https://linkedin.com/in/yourhandle" target="_blank" rel="noopener">
+          <svg viewBox="0 0 24 24"><path d="M20.4 20.4h-3.6v-5.6c0-1.3 0-3-1.9-3s-2.1 1.4-2.1 2.9v5.7H9.2V9h3.4v1.6h.1c.5-.9 1.7-1.9 3.4-1.9 3.6 0 4.3 2.4 4.3 5.5v6.2zM5.3 7.4a2.1 2.1 0 1 1 0-4.2 2.1 2.1 0 0 1 0 4.2zM7.1 20.4H3.5V9h3.6v11.4zM22.2 0H1.8C.8 0 0 .8 0 1.7v20.6c0 .9.8 1.7 1.8 1.7h20.4c1 0 1.8-.8 1.8-1.7V1.7c0-.9-.8-1.7-1.8-1.7z"/></svg>
+          LinkedIn
+        </a>
+        <a href="mailto:you@email.com">
+          <svg viewBox="0 0 24 24"><path d="M22 4H2a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h20a2 2 0 0 0 2-2V6a2 2 0 0 0-2-2zm-.6 2L12 12.2 2.6 6h18.8zM2 18V7.2l9.5 6.3a1 1 0 0 0 1 0L22 7.2V18H2z"/></svg>
+          Email
+        </a>
+      </div>
+    </div>
+
+    <figure class="plot" aria-hidden="true">
+      <svg viewBox="0 0 520 360" id="scatter" role="img"></svg>
+      <figcaption><span>model output vs. observed</span><span>r² = 0.87</span></figcaption>
+    </figure>
+  </div>
+</div>
+
+<!-- ============ ABOUT ============ -->
+<section id="about" class="rv">
+  <div class="wrap">
+    <p class="eyebrow">About</p>
+    <div class="about">
+      <img class="portrait" src="headshot.jpg" alt="Portrait of Your Name">
+      <div>
+        <h2 style="margin-bottom:22px">Statistics first,<br>engineering second.</h2>
+        <p>I'm a data scientist with a background in [your degree] from [your school]. Most of my work sits where messy real-world data meets a decision someone actually has to make — which is usually less about the model and more about whether the question was framed right in the first place.</p>
+        <p>Before this I [one line of relevant background — a research role, an internship, a career switch, whatever gives context]. That's where I learned to care about reproducibility, because I've been the person who had to re-run someone else's analysis six months later.</p>
+        <p>Outside of work I [one genuinely human detail — climbing, bread, chess, birding]. It makes the interview conversation easier, and it's true.</p>
+
+        <div class="stack">
+          <div>
+            <h3>Languages</h3>
+            <ul><li>Python</li><li>R</li><li>SQL</li><li>Bash</li></ul>
+          </div>
+          <div>
+            <h3>Modeling</h3>
+            <ul><li>scikit-learn</li><li>PyTorch</li><li>XGBoost</li><li>statsmodels</li></ul>
+          </div>
+          <div>
+            <h3>Data &amp; infra</h3>
+            <ul><li>dbt / Airflow</li><li>Snowflake</li><li>Spark</li><li>Docker</li></ul>
+          </div>
+          <div>
+            <h3>Communication</h3>
+            <ul><li>Tableau</li><li>Streamlit</li><li>Quarto</li><li>Experiment design</li></ul>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ PROJECTS ============ -->
+<section id="projects" class="rv">
+  <div class="wrap">
+    <p class="eyebrow">Projects</p>
+    <h2>Selected work</h2>
+    <p class="lede" style="margin-top:16px">Four projects that show the range: a forecast, a causal question, an NLP pipeline, and something built for other people to use.</p>
+
+    <div class="proj-grid">
+
+      <article class="proj">
+        <div class="proj-top">
+          <h3>Demand forecasting at store level</h3>
+          <span>2025</span>
+        </div>
+        <p>Hierarchical time-series forecast across 1,200 SKUs and 40 locations, with reconciliation so store-level predictions actually sum to the regional plan.</p>
+        <p class="result">Cut MAPE from 18% to 11% against the incumbent seasonal-naive baseline.</p>
+        <ul class="tags"><li>Python</li><li>Prophet</li><li>hierarchical TS</li><li>Airflow</li></ul>
+        <div class="proj-links">
+          <a href="#">Code &rarr;</a>
+          <a href="#">Write-up &rarr;</a>
+        </div>
+      </article>
+
+      <article class="proj">
+        <div class="proj-top">
+          <h3>Did the loyalty program work?</h3>
+          <span>2025</span>
+        </div>
+        <p>Difference-in-differences with a synthetic control on staggered rollout data, plus sensitivity analysis for how much unobserved confounding it would take to flip the sign.</p>
+        <p class="result">Effect held at +4.2% retention under a 1.8x confounding stress test.</p>
+        <ul class="tags"><li>R</li><li>causal inference</li><li>DiD</li><li>synthetic control</li></ul>
+        <div class="proj-links">
+          <a href="#">Code &rarr;</a>
+          <a href="#">Write-up &rarr;</a>
+        </div>
+      </article>
+
+      <article class="proj">
+        <div class="proj-top">
+          <h3>Support ticket triage</h3>
+          <span>2024</span>
+        </div>
+        <p>Fine-tuned a transformer to route incoming tickets to the right team, with a confidence threshold that hands ambiguous cases to a human instead of guessing.</p>
+        <p class="result">91% routing accuracy; 34% of manual triage time recovered.</p>
+        <ul class="tags"><li>PyTorch</li><li>Hugging Face</li><li>NLP</li><li>FastAPI</li></ul>
+        <div class="proj-links">
+          <a href="#">Code &rarr;</a>
+          <a href="#">Demo &rarr;</a>
+        </div>
+      </article>
+
+      <article class="proj">
+        <div class="proj-top">
+          <h3>Open-data dashboard</h3>
+          <span>2024</span>
+        </div>
+        <p>A public dashboard on city housing permits — the whole pipeline from scraping to a hosted app, rebuilt nightly and designed for people who don't read charts for a living.</p>
+        <p class="result">~2k monthly users; cited by two local news outlets.</p>
+        <ul class="tags"><li>Streamlit</li><li>DuckDB</li><li>dbt</li><li>Docker</li></ul>
+        <div class="proj-links">
+          <a href="#">Code &rarr;</a>
+          <a href="#">Live app &rarr;</a>
+        </div>
+      </article>
+
+    </div>
+  </div>
+</section>
+
+<!-- ============ EXPERIENCE ============ -->
+<section id="experience" class="rv">
+  <div class="wrap">
+    <p class="eyebrow">Experience &amp; education</p>
+    <h2>Where I've worked</h2>
+
+    <div class="xp">
+      <div class="xp-row">
+        <div class="xp-when">2024 &mdash; Present</div>
+        <div>
+          <h3>Data Scientist</h3>
+          <p class="xp-org">Company Name</p>
+          <p class="xp-body">One or two sentences on what you own and what changed because of it. Lead with the outcome, not the tool list — the tools are already on your resume.</p>
+        </div>
+      </div>
+      <div class="xp-row">
+        <div class="xp-when">Summer 2023</div>
+        <div>
+          <h3>Data Science Intern</h3>
+          <p class="xp-org">Company Name</p>
+          <p class="xp-body">What you shipped in twelve weeks, and whether anyone still uses it.</p>
+        </div>
+      </div>
+      <div class="xp-row">
+        <div class="xp-when">2020 &mdash; 2024</div>
+        <div>
+          <h3>B.S. Statistics &amp; Data Science</h3>
+          <p class="xp-org">University Name</p>
+          <p class="xp-body">Relevant coursework, honors, thesis, or a research group worth naming. Skip the GPA unless it helps you.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ CONTACT ============ -->
+<section id="contact" class="rv">
+  <div class="wrap">
+    <p class="eyebrow">Contact</p>
+    <h2>Let's talk.</h2>
+    <p class="lede" style="margin-top:16px">Open to full-time data science roles. If you're hiring — or just want to talk about a project — the fastest way to reach me is email.</p>
+
+    <div class="contact-grid">
+      <div>
+        <a class="big-mail" href="mailto:you@email.com">you@email.com</a>
+        <div class="sociallinks" style="margin-top:28px">
+          <a href="https://github.com/yourhandle" target="_blank" rel="noopener">
+            <svg viewBox="0 0 24 24"><path d="M12 .5C5.7.5.5 5.7.5 12c0 5.1 3.3 9.4 7.9 10.9.6.1.8-.2.8-.6v-2c-3.2.7-3.9-1.5-3.9-1.5-.5-1.3-1.3-1.7-1.3-1.7-1.1-.7.1-.7.1-.7 1.2.1 1.8 1.2 1.8 1.2 1 1.8 2.7 1.3 3.4 1 .1-.8.4-1.3.7-1.6-2.6-.3-5.3-1.3-5.3-5.8 0-1.3.5-2.3 1.2-3.1-.1-.3-.5-1.5.1-3.1 0 0 1-.3 3.3 1.2a11.3 11.3 0 0 1 6 0c2.3-1.5 3.3-1.2 3.3-1.2.6 1.6.2 2.8.1 3.1.8.8 1.2 1.8 1.2 3.1 0 4.5-2.7 5.5-5.3 5.8.4.4.8 1.1.8 2.2v3.3c0 .4.2.7.8.6 4.6-1.5 7.9-5.8 7.9-10.9C23.5 5.7 18.3.5 12 .5z"/></svg>
+            github.com/yourhandle
+          </a>
+          <a href="https://linkedin.com/in/yourhandle" target="_blank" rel="noopener">
+            <svg viewBox="0 0 24 24"><path d="M20.4 20.4h-3.6v-5.6c0-1.3 0-3-1.9-3s-2.1 1.4-2.1 2.9v5.7H9.2V9h3.4v1.6h.1c.5-.9 1.7-1.9 3.4-1.9 3.6 0 4.3 2.4 4.3 5.5v6.2zM5.3 7.4a2.1 2.1 0 1 1 0-4.2 2.1 2.1 0 0 1 0 4.2zM7.1 20.4H3.5V9h3.6v11.4zM22.2 0H1.8C.8 0 0 .8 0 1.7v20.6c0 .9.8 1.7 1.8 1.7h20.4c1 0 1.8-.8 1.8-1.7V1.7c0-.9-.8-1.7-1.8-1.7z"/></svg>
+            in/yourhandle
+          </a>
+        </div>
+        <p style="margin-top:28px">
+          <a class="btn btn-ghost" href="resume.pdf" download>Download resume (PDF)</a>
+        </p>
+      </div>
+
+      <!-- Swap FORMSPREE_ID for your endpoint from formspree.io (free tier is fine) -->
+      <form action="https://formspree.io/f/FORMSPREE_ID" method="POST">
+        <div>
+          <label for="name">Your name</label>
+          <input id="name" name="name" type="text" required>
+        </div>
+        <div>
+          <label for="email">Email</label>
+          <input id="email" name="email" type="email" required>
+        </div>
+        <div>
+          <label for="message">Message</label>
+          <textarea id="message" name="message" required></textarea>
+        </div>
+        <button class="btn btn-solid" type="submit">Send message</button>
+        <p class="formnote">Goes straight to my inbox. I reply within a couple of days.</p>
+      </form>
+    </div>
+  </div>
+</section>
+
+</main>
+
+<footer>
+  <div class="wrap foot">
+    <span>&copy; <span id="yr">2026</span> Your Name</span>
+    <span><a href="#top">Back to top &uarr;</a></span>
+  </div>
+</footer>
+
+<script>
+document.getElementById('yr').textContent = new Date().getFullYear();
+
+/* ---- hero scatter: points around a fitted line ---- */
+(function(){
+  const svg = document.getElementById('scatter');
+  if(!svg) return;
+  const NS='http://www.w3.org/2000/svg';
+  const W=520,H=360,pad=26;
+  let seed=42;
+  const rnd=()=>(seed=(seed*16807)%2147483647)/2147483647;
+  const g=(n,attrs)=>{const e=document.createElementNS(NS,n);for(const k in attrs)e.setAttribute(k,attrs[k]);return e;};
+
+  // grid
+  const grid=g('g',{class:'grid'});
+  for(let i=1;i<5;i++){
+    const y=pad+i*(H-2*pad)/5;
+    grid.appendChild(g('line',{x1:pad,y1:y,x2:W-pad,y2:y,'stroke-width':1}));
+    const x=pad+i*(W-2*pad)/5;
+    grid.appendChild(g('line',{x1:x,y1:pad,x2:x,y2:H-pad,'stroke-width':1}));
+  }
+  svg.appendChild(grid);
+
+  // fitted line (drawn under the points)
+  svg.appendChild(g('path',{class:'fit',d:`M ${pad} ${H-pad-14} L ${W-pad} ${pad+22}`}));
+
+  // points scattered around it
+  const n=48;
+  for(let i=0;i<n;i++){
+    const t=rnd();
+    const x=pad+t*(W-2*pad);
+    const ideal=(H-pad-14)+t*((pad+22)-(H-pad-14));
+    const noise=(rnd()-0.5)*72;
+    const y=Math.max(pad-6,Math.min(H-pad+6,ideal+noise));
+    const c=g('circle',{class:'dot'+(Math.abs(noise)<12?' hi':''),cx:x.toFixed(1),cy:y.toFixed(1),r:(3.4+rnd()*2.4).toFixed(1)});
+    c.style.animationDelay=(i*22)+'ms';
+    c.style.transformOrigin=`${x.toFixed(1)}px ${y.toFixed(1)}px`;
+    svg.appendChild(c);
+  }
+})();
+
+/* ---- sticky nav hairline ---- */
+const hdr=document.querySelector('header');
+addEventListener('scroll',()=>hdr.classList.toggle('stuck',scrollY>8),{passive:true});
+
+/* ---- scroll reveal ---- */
+const io=new IntersectionObserver(es=>es.forEach(e=>{
+  if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target);}
+}),{threshold:.08,rootMargin:'0px 0px -8% 0px'});
+document.querySelectorAll('.rv').forEach(el=>io.observe(el));
+
+/* ---- active nav link ---- */
+const links=[...document.querySelectorAll('.nav-links a')];
+const spy=new IntersectionObserver(es=>es.forEach(e=>{
+  if(e.isIntersecting){
+    links.forEach(l=>l.classList.toggle('active',l.getAttribute('href')==='#'+e.target.id));
+  }
+}),{rootMargin:'-45% 0px -50% 0px'});
+document.querySelectorAll('section[id]').forEach(s=>spy.observe(s));
+</script>
+</body>
+</html>
