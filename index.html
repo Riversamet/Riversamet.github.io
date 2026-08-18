@@ -85,42 +85,35 @@ header.stuck{border-bottom-color:var(--line)}
 .btn-ghost:hover{border-color:var(--green);background:var(--wash-2)}
 .nav .btn{padding:8px 15px}
 
-/* hero */
+/* ---------- hero ---------- */
 .hero{
-  display:grid;grid-template-columns:1.15fr .85fr;gap:clamp(36px,5vw,64px);align-items:center;
-  padding:clamp(48px,8vw,92px) 0 clamp(52px,7vw,80px);
+  display:grid;grid-template-columns:1fr auto;gap:clamp(36px,6vw,72px);align-items:center;
+  padding:clamp(48px,8vw,96px) 0 clamp(52px,7vw,84px);
 }
 .hero h1{font-size:clamp(46px,7.2vw,80px);letter-spacing:-.035em;margin-bottom:22px}
 .hero .lede{margin:0 0 30px}
 .cta-row{display:flex;flex-wrap:wrap;gap:12px;margin-bottom:30px}
 .sociallinks{display:flex;flex-wrap:wrap;gap:22px;font-family:var(--mono);font-size:13px}
-.sociallinks a{color:var(--ink-2);text-decoration:none;display:inline-flex;align-items:center;gap:7px}
-.sociallinks a:hover{color:var(--green-deep)}
-.sociallinks svg{width:15px;height:15px;fill:currentColor}
+.sociallinks a,.sociallinks button{
+  color:var(--ink-2);text-decoration:none;display:inline-flex;align-items:center;gap:7px;
+  background:none;border:none;padding:0;font-family:var(--mono);font-size:13px;cursor:pointer;
+}
+.sociallinks a:hover,.sociallinks button:hover{color:var(--green-deep)}
+.sociallinks svg{width:15px;height:15px;fill:currentColor;flex:none}
 
-.shot{position:relative}
+.shot{position:relative;width:clamp(230px,32vw,380px);aspect-ratio:1;justify-self:end}
 .shot img{
-  width:100%;aspect-ratio:4/5;object-fit:cover;object-position:center 18%;
-  border-radius:16px;border:1px solid var(--line);background:var(--wash-2);
+  width:100%;height:100%;border-radius:50%;object-fit:cover;
+  border:1px solid var(--line);background:var(--wash-2);position:relative;z-index:1;
 }
 .shot::before{
-  content:"";position:absolute;inset:14px -14px -14px 14px;
-  border-radius:16px;background:var(--wash);z-index:-1;
+  content:"";position:absolute;inset:-14px;border-radius:50%;
+  border:1px solid var(--line);background:var(--wash-2);
 }
 
 section{padding:clamp(60px,8vw,104px) 0;border-top:1px solid var(--line)}
-#contact{border-top:1px solid var(--line)}
 
-/* about */
-.about-grid{display:grid;grid-template-columns:1fr 1fr;gap:clamp(32px,5vw,60px);align-items:start}
-.about-grid p{margin:0 0 18px;color:var(--ink-2)}
-.about-grid p:first-child{color:var(--ink)}
-.stack{display:grid;grid-template-columns:repeat(auto-fit,minmax(160px,1fr));gap:24px}
-.stack h3{font-family:var(--mono);font-size:11.5px;font-weight:500;letter-spacing:.12em;text-transform:uppercase;color:var(--green-deep);margin-bottom:11px}
-.stack ul{list-style:none;margin:0;padding:0;font-size:15px;color:var(--ink-2)}
-.stack li{padding:2.5px 0}
-
-/* projects */
+/* ---------- projects ---------- */
 .proj-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(330px,1fr));gap:22px;margin-top:44px}
 .proj{
   border:1px solid var(--line);border-radius:14px;padding:28px;background:var(--paper);
@@ -128,14 +121,12 @@ section{padding:clamp(60px,8vw,104px) 0;border-top:1px solid var(--line)}
 }
 .proj:hover{border-color:var(--green);background:var(--wash-2);transform:translateY(-3px)}
 .proj.feature{grid-column:1/-1}
+.proj.draft{border-style:dashed;background:var(--paper-2)}
 .proj-top{display:flex;justify-content:space-between;align-items:baseline;gap:14px;margin-bottom:14px}
 .proj-top span{font-family:var(--mono);font-size:11px;letter-spacing:.1em;text-transform:uppercase;color:var(--muted);white-space:nowrap}
 .proj h3{font-size:22px}
 .proj > p{font-size:15.5px;color:var(--ink-2);margin:0 0 20px}
-.findings{
-  background:var(--wash);border-radius:8px;padding:16px 18px;margin:0 0 20px;
-  list-style:none;
-}
+.findings{background:var(--wash);border-radius:8px;padding:16px 18px;margin:0 0 20px;list-style:none}
 .findings li{
   font-size:14.5px;color:var(--green-deep);line-height:1.5;padding-left:16px;
   position:relative;margin-bottom:8px;
@@ -152,7 +143,7 @@ section{padding:clamp(60px,8vw,104px) 0;border-top:1px solid var(--line)}
 .proj-links a{text-decoration:none;display:inline-flex;align-items:center;gap:6px}
 .proj-links a:hover{text-decoration:underline}
 
-/* experience */
+/* ---------- experience ---------- */
 .xp{margin-top:44px}
 .xp-row{display:grid;grid-template-columns:180px 1fr;gap:34px;padding:26px 0;border-bottom:1px solid var(--line)}
 .xp-row:first-child{border-top:1px solid var(--line)}
@@ -165,24 +156,27 @@ section{padding:clamp(60px,8vw,104px) 0;border-top:1px solid var(--line)}
   color:var(--green-deep);margin:52px 0 0;
 }
 
-/* contact */
+/* ---------- about ---------- */
+#about{background:var(--paper-2)}
+.about-body{max-width:64ch;margin-top:26px}
+.about-body p{margin:0 0 18px;color:var(--ink-2);font-size:17px}
+.about-body p:first-child{color:var(--ink);font-size:clamp(17px,1.5vw,19px)}
+.stack{display:grid;grid-template-columns:repeat(auto-fit,minmax(160px,1fr));gap:24px;margin-top:44px}
+.stack h3{font-family:var(--mono);font-size:11.5px;font-weight:500;letter-spacing:.12em;text-transform:uppercase;color:var(--green-deep);margin-bottom:11px}
+.stack ul{list-style:none;margin:0;padding:0;font-size:15px;color:var(--ink-2)}
+.stack li{padding:2.5px 0}
+
+/* ---------- contact ---------- */
 #contact{background:var(--wash-2)}
-.contact-grid{display:grid;grid-template-columns:1fr 1fr;gap:56px;align-items:start;margin-top:36px}
+.contact-actions{display:flex;flex-wrap:wrap;gap:12px;align-items:center;margin-top:34px}
 .big-mail{
-  font-family:var(--display);font-size:clamp(22px,2.9vw,32px);font-weight:600;letter-spacing:-.02em;
-  color:var(--ink);text-decoration:none;display:inline-block;border-bottom:2px solid var(--green);padding-bottom:3px;
+  font-family:var(--display);font-size:clamp(24px,4vw,40px);font-weight:600;letter-spacing:-.025em;
+  color:var(--ink);text-decoration:none;display:inline-block;
+  border-bottom:2px solid var(--green);padding-bottom:4px;
 }
 .big-mail:hover{color:var(--green-deep)}
-form{display:grid;gap:14px}
-label{font-family:var(--mono);font-size:11.5px;letter-spacing:.1em;text-transform:uppercase;color:var(--green-deep);display:block;margin-bottom:6px}
-input,textarea{
-  width:100%;font-family:var(--body);font-size:16px;color:var(--ink);
-  background:var(--paper);border:1px solid var(--line);border-radius:9px;padding:12px 14px;
-}
-input:focus,textarea:focus{border-color:var(--green);outline:none;box-shadow:0 0 0 3px rgba(76,139,63,.13)}
-textarea{resize:vertical;min-height:120px}
-form button{border:none;cursor:pointer;font-family:var(--body);justify-self:start}
-.formnote{font-size:13.5px;color:var(--muted);margin:0}
+.copied{font-family:var(--mono);font-size:12px;color:var(--green-deep);opacity:0;transition:opacity .2s}
+.copied.on{opacity:1}
 
 footer{border-top:1px solid var(--line);background:var(--paper);padding:26px 0;font-family:var(--mono);font-size:12px;color:var(--muted)}
 .foot{display:flex;flex-wrap:wrap;gap:16px;justify-content:space-between;align-items:center}
@@ -193,10 +187,8 @@ footer{border-top:1px solid var(--line);background:var(--paper);padding:26px 0;f
 .rv.in{opacity:1;transform:none}
 
 @media (max-width:900px){
-  .hero{grid-template-columns:1fr;gap:40px}
-  .shot{max-width:300px}
-  .about-grid{grid-template-columns:1fr}
-  .contact-grid{grid-template-columns:1fr;gap:36px}
+  .hero{grid-template-columns:1fr;gap:36px}
+  .shot{justify-self:start;width:clamp(200px,52vw,280px)}
   .nav-links{display:none}
 }
 @media (max-width:560px){
@@ -218,12 +210,12 @@ footer{border-top:1px solid var(--line);background:var(--paper);padding:26px 0;f
   <nav class="nav">
     <a class="mark" href="#top" aria-label="Back to top">RS</a>
     <div class="nav-links">
-      <a href="#about">About</a>
       <a href="#projects">Projects</a>
       <a href="#experience">Experience</a>
+      <a href="#about">About</a>
       <a href="#contact">Contact</a>
     </div>
-    <a class="btn btn-solid" href="resume.pdf" download>
+    <a class="btn btn-solid" href="resume.pdf" download="River_Samet_Resume.pdf">
       <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
       Resume
     </a>
@@ -232,16 +224,17 @@ footer{border-top:1px solid var(--line);background:var(--paper);padding:26px 0;f
 
 <main>
 
-<!-- ============ HERO ============ -->
+<!-- ================= HERO ================= -->
 <div class="wrap">
   <div class="hero">
     <div>
       <p class="eyebrow">Data scientist &middot; Santa Monica, CA</p>
       <h1>River Samet</h1>
+      <!-- TAILOR THIS PARAGRAPH per role type. Keep it to 3-4 sentences. -->
       <p class="lede">Computational chemist turned data scientist. For five years I've built machine learning models and automation pipelines for scientific data — training classifiers on experimental results, running thousands of simulations on HPC clusters, and turning datasets with tens of thousands of entries into conclusions a research group can act on. Looking for a full-time data science or analytics role.</p>
       <div class="cta-row">
-        <a class="btn btn-solid" href="resume.pdf" download>Download resume</a>
-        <a class="btn btn-ghost" href="#projects">See projects</a>
+        <a class="btn btn-solid" href="resume.pdf" download="River_Samet_Resume.pdf">Download resume</a>
+        <a class="btn btn-ghost" href="resume.pdf" target="_blank" rel="noopener">View in browser</a>
       </div>
       <div class="sociallinks">
         <a href="https://github.com/Riversamet" target="_blank" rel="noopener">
@@ -265,48 +258,42 @@ footer{border-top:1px solid var(--line);background:var(--paper);padding:26px 0;f
   </div>
 </div>
 
-<!-- ============ ABOUT ============ -->
-<section id="about" class="rv">
-  <div class="wrap">
-    <p class="eyebrow">About</p>
-    <h2 style="margin-bottom:32px">Chemistry taught me<br>to distrust a clean result.</h2>
-    <div class="about-grid">
-      <div>
-        <p>I finished my M.S. in chemistry at UCLA in 2026 with a computational emphasis, which in practice meant I spent far more time writing Python than holding a pipette. My research sat at the intersection of machine learning, statistical modeling, and quantum mechanical simulation — predicting how a dozen different organic and biological reactions behave, and building the infrastructure to test those predictions at scale.</p>
-        <p>What I actually learned there transfers cleanly. Experimental data is noisy, expensive, and often too small for the model you'd like to use. Getting a defensible answer out of it means being honest about what the model can support: checking whether a random forest is memorizing the training set instead of learning from it, watching whether feature importances hold up when you change the architecture, and resisting the urge to explain a correlation you can't justify. A test metric that looks too good is usually the beginning of the investigation, not the end of it.</p>
-        <p>The engineering side came from necessity. Running thousands of simulation jobs on a shared HPC cluster is not something you do by hand, so I built more than twenty Python and Bash pipelines to handle submission, monitoring, and analysis — work that eventually became <a href="https://github.com/Riversamet/QTRAP">QTRAP</a>, a published workflow with an agentic layer on top.</p>
-        <p>I'm now looking for data science and analytics work where the questions are genuinely open. Based in Santa Monica; happy to talk about anything from feature engineering to why your R&#178; is lying to you.</p>
-      </div>
-      <div class="stack">
-        <div>
-          <h3>Languages</h3>
-          <ul><li>Python</li><li>SQL</li><li>Bash / Linux</li><li>Mathematica</li></ul>
-        </div>
-        <div>
-          <h3>Machine learning</h3>
-          <ul><li>scikit-learn</li><li>TensorFlow</li><li>Random forests</li><li>Neural nets (MLP, CNN)</li><li>Cross-validation</li><li>Hyperparameter tuning</li></ul>
-        </div>
-        <div>
-          <h3>Data &amp; analysis</h3>
-          <ul><li>pandas</li><li>NumPy</li><li>PostgreSQL</li><li>Tableau</li><li>matplotlib / seaborn</li><li>SQLAlchemy</li></ul>
-        </div>
-        <div>
-          <h3>Scientific computing</h3>
-          <ul><li>HPC (SGE clusters)</li><li>Amber / AmberTools</li><li>Gaussian / ORCA</li><li>MDTraj / pytraj</li><li>RDKit</li><li>PyMOL / Chimera</li></ul>
-        </div>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- ============ PROJECTS ============ -->
+<!-- ================= PROJECTS ================= -->
 <section id="projects" class="rv">
   <div class="wrap">
     <p class="eyebrow">Projects</p>
     <h2>Selected work</h2>
-    <p class="lede" style="margin-top:16px">Five projects spanning simulation infrastructure, supervised learning on experimental data, deep learning for images, and SQL-to-dashboard analytics. Code and full write-ups are on GitHub.</p>
+    <p class="lede" style="margin-top:16px">Simulation infrastructure, supervised learning on experimental data, deep learning for images, and SQL-to-dashboard analytics. Code and full write-ups are on GitHub.</p>
 
     <div class="proj-grid">
+
+      <!-- ============================================================
+           PLACEHOLDER CARD for the project you're still adding.
+           1. Fill in the four spots marked below.
+           2. Delete the word "draft" from class="proj feature draft" just
+              below, so the card stops looking like an unfinished draft.
+           3. To move it above QTRAP, cut everything from the opening
+              article tag to its closing tag and paste it above QTRAP's.
+           4. For a normal-width card instead of full-width, also delete
+              the word "feature".
+           ============================================================ -->
+      <article class="proj feature draft">
+        <div class="proj-top">
+          <h3>Project title goes here</h3>
+          <span>Year &middot; Type</span>
+        </div>
+        <p>Two or three sentences on what the question was, what data you used, and what approach you took. Match the tone of the cards below: lead with the problem, not the tool list.</p>
+        <ul class="findings">
+          <li>First key finding — a number if you have one.</li>
+          <li>Second key finding.</li>
+          <li>Something that surprised you, or a limitation worth naming.</li>
+        </ul>
+        <p class="skills-label">Skills applied</p>
+        <ul class="tags"><li>skill one</li><li>skill two</li><li>skill three</li></ul>
+        <div class="proj-links">
+          <a href="#">Code &amp; write-up &rarr;</a>
+        </div>
+      </article>
 
       <article class="proj feature">
         <div class="proj-top">
@@ -407,7 +394,7 @@ footer{border-top:1px solid var(--line);background:var(--paper);padding:26px 0;f
   </div>
 </section>
 
-<!-- ============ EXPERIENCE ============ -->
+<!-- ================= EXPERIENCE ================= -->
 <section id="experience" class="rv">
   <div class="wrap">
     <p class="eyebrow">Experience</p>
@@ -470,48 +457,62 @@ footer{border-top:1px solid var(--line);background:var(--paper);padding:26px 0;f
   </div>
 </section>
 
-<!-- ============ CONTACT ============ -->
+<!-- ================= ABOUT ================= -->
+<section id="about" class="rv">
+  <div class="wrap">
+    <p class="eyebrow">About</p>
+    <h2>Chemistry taught me<br>to distrust a clean result.</h2>
+    <div class="about-body">
+      <p>Experimental data is noisy, expensive, and usually too small for the model you'd like to use. Five years of computational chemistry taught me to be honest about what that data can actually support — and that a test metric which looks too good is the start of an investigation, not the end of one.</p>
+      <p>I'm looking for data science and analytics work where the questions are genuinely open. Based in Santa Monica.</p>
+    </div>
+
+    <div class="stack">
+      <div>
+        <h3>Languages</h3>
+        <ul><li>Python</li><li>SQL</li><li>Bash / Linux</li><li>Mathematica</li></ul>
+      </div>
+      <div>
+        <h3>Machine learning</h3>
+        <ul><li>scikit-learn</li><li>TensorFlow</li><li>Random forests</li><li>Neural nets (MLP, CNN)</li><li>Cross-validation</li><li>Hyperparameter tuning</li></ul>
+      </div>
+      <div>
+        <h3>Data &amp; analysis</h3>
+        <ul><li>pandas</li><li>NumPy</li><li>PostgreSQL</li><li>Tableau</li><li>matplotlib / seaborn</li><li>SQLAlchemy</li></ul>
+      </div>
+      <div>
+        <h3>Scientific computing</h3>
+        <ul><li>HPC (SGE clusters)</li><li>Amber / AmberTools</li><li>Gaussian / ORCA</li><li>MDTraj / pytraj</li><li>RDKit</li><li>PyMOL / Chimera</li></ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ================= CONTACT ================= -->
 <section id="contact" class="rv">
   <div class="wrap">
     <p class="eyebrow">Contact</p>
     <h2>Let's talk.</h2>
-    <p class="lede" style="margin-top:16px">Open to full-time data science and analytics roles, in Los Angeles or remote. If you're hiring — or you just want to argue about feature importance — email is the fastest way to reach me.</p>
+    <p class="lede" style="margin-top:16px">Open to full-time data science and analytics roles, in Los Angeles or remote. Email is the fastest way to reach me.</p>
 
-    <div class="contact-grid">
-      <div>
-        <a class="big-mail" href="mailto:riversamet@gmail.com">riversamet@gmail.com</a>
-        <div class="sociallinks" style="margin-top:28px">
-          <a href="https://github.com/Riversamet" target="_blank" rel="noopener">
-            <svg viewBox="0 0 24 24"><path d="M12 .5C5.7.5.5 5.7.5 12c0 5.1 3.3 9.4 7.9 10.9.6.1.8-.2.8-.6v-2c-3.2.7-3.9-1.5-3.9-1.5-.5-1.3-1.3-1.7-1.3-1.7-1.1-.7.1-.7.1-.7 1.2.1 1.8 1.2 1.8 1.2 1 1.8 2.7 1.3 3.4 1 .1-.8.4-1.3.7-1.6-2.6-.3-5.3-1.3-5.3-5.8 0-1.3.5-2.3 1.2-3.1-.1-.3-.5-1.5.1-3.1 0 0 1-.3 3.3 1.2a11.3 11.3 0 0 1 6 0c2.3-1.5 3.3-1.2 3.3-1.2.6 1.6.2 2.8.1 3.1.8.8 1.2 1.8 1.2 3.1 0 4.5-2.7 5.5-5.3 5.8.4.4.8 1.1.8 2.2v3.3c0 .4.2.7.8.6 4.6-1.5 7.9-5.8 7.9-10.9C23.5 5.7 18.3.5 12 .5z"/></svg>
-            github.com/Riversamet
-          </a>
-          <a href="https://www.linkedin.com/in/river-samet" target="_blank" rel="noopener">
-            <svg viewBox="0 0 24 24"><path d="M20.4 20.4h-3.6v-5.6c0-1.3 0-3-1.9-3s-2.1 1.4-2.1 2.9v5.7H9.2V9h3.4v1.6h.1c.5-.9 1.7-1.9 3.4-1.9 3.6 0 4.3 2.4 4.3 5.5v6.2zM5.3 7.4a2.1 2.1 0 1 1 0-4.2 2.1 2.1 0 0 1 0 4.2zM7.1 20.4H3.5V9h3.6v11.4zM22.2 0H1.8C.8 0 0 .8 0 1.7v20.6c0 .9.8 1.7 1.8 1.7h20.4c1 0 1.8-.8 1.8-1.7V1.7c0-.9-.8-1.7-1.8-1.7z"/></svg>
-            in/river-samet
-          </a>
-        </div>
-        <p style="margin-top:28px">
-          <a class="btn btn-ghost" href="resume.pdf" download>Download resume (PDF)</a>
-        </p>
-      </div>
+    <p style="margin:34px 0 0"><a class="big-mail" href="mailto:riversamet@gmail.com">riversamet@gmail.com</a></p>
 
-      <!-- Replace FORMSPREE_ID with your endpoint from formspree.io -->
-      <form action="https://formspree.io/f/FORMSPREE_ID" method="POST">
-        <div>
-          <label for="name">Your name</label>
-          <input id="name" name="name" type="text" required>
-        </div>
-        <div>
-          <label for="email">Email</label>
-          <input id="email" name="email" type="email" required>
-        </div>
-        <div>
-          <label for="message">Message</label>
-          <textarea id="message" name="message" required></textarea>
-        </div>
-        <button class="btn btn-solid" type="submit">Send message</button>
-        <p class="formnote">Goes straight to my inbox. I reply within a couple of days.</p>
-      </form>
+    <div class="contact-actions">
+      <a class="btn btn-solid" href="mailto:riversamet@gmail.com">Send an email</a>
+      <button class="btn btn-ghost" type="button" id="copybtn">Copy address</button>
+      <a class="btn btn-ghost" href="resume.pdf" download="River_Samet_Resume.pdf">Download resume</a>
+      <span class="copied" id="copied">Copied</span>
+    </div>
+
+    <div class="sociallinks" style="margin-top:34px">
+      <a href="https://github.com/Riversamet" target="_blank" rel="noopener">
+        <svg viewBox="0 0 24 24"><path d="M12 .5C5.7.5.5 5.7.5 12c0 5.1 3.3 9.4 7.9 10.9.6.1.8-.2.8-.6v-2c-3.2.7-3.9-1.5-3.9-1.5-.5-1.3-1.3-1.7-1.3-1.7-1.1-.7.1-.7.1-.7 1.2.1 1.8 1.2 1.8 1.2 1 1.8 2.7 1.3 3.4 1 .1-.8.4-1.3.7-1.6-2.6-.3-5.3-1.3-5.3-5.8 0-1.3.5-2.3 1.2-3.1-.1-.3-.5-1.5.1-3.1 0 0 1-.3 3.3 1.2a11.3 11.3 0 0 1 6 0c2.3-1.5 3.3-1.2 3.3-1.2.6 1.6.2 2.8.1 3.1.8.8 1.2 1.8 1.2 3.1 0 4.5-2.7 5.5-5.3 5.8.4.4.8 1.1.8 2.2v3.3c0 .4.2.7.8.6 4.6-1.5 7.9-5.8 7.9-10.9C23.5 5.7 18.3.5 12 .5z"/></svg>
+        github.com/Riversamet
+      </a>
+      <a href="https://www.linkedin.com/in/river-samet" target="_blank" rel="noopener">
+        <svg viewBox="0 0 24 24"><path d="M20.4 20.4h-3.6v-5.6c0-1.3 0-3-1.9-3s-2.1 1.4-2.1 2.9v5.7H9.2V9h3.4v1.6h.1c.5-.9 1.7-1.9 3.4-1.9 3.6 0 4.3 2.4 4.3 5.5v6.2zM5.3 7.4a2.1 2.1 0 1 1 0-4.2 2.1 2.1 0 0 1 0 4.2zM7.1 20.4H3.5V9h3.6v11.4zM22.2 0H1.8C.8 0 0 .8 0 1.7v20.6c0 .9.8 1.7 1.8 1.7h20.4c1 0 1.8-.8 1.8-1.7V1.7c0-.9-.8-1.7-1.8-1.7z"/></svg>
+        in/river-samet
+      </a>
     </div>
   </div>
 </section>
@@ -543,6 +544,14 @@ const spy=new IntersectionObserver(es=>es.forEach(e=>{
   }
 }),{rootMargin:'-45% 0px -50% 0px'});
 document.querySelectorAll('section[id]').forEach(s=>spy.observe(s));
+
+const cbtn=document.getElementById('copybtn'), cmsg=document.getElementById('copied');
+cbtn.addEventListener('click',async()=>{
+  try{ await navigator.clipboard.writeText('riversamet@gmail.com'); }
+  catch(e){ const t=document.createElement('textarea'); t.value='riversamet@gmail.com';
+    document.body.appendChild(t); t.select(); document.execCommand('copy'); t.remove(); }
+  cmsg.classList.add('on'); setTimeout(()=>cmsg.classList.remove('on'),1800);
+});
 </script>
 </body>
 </html>
