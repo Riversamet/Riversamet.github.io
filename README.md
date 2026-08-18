@@ -1,7 +1,7 @@
 # Personal Website
 
-This repository contains all contents required to properly run my own personal website:
+This repository contains all content required to properly run my own personal website:
 
-[riversamet.com](riversamet.com)
+[riversamet.com](https://riversamet.com)
 
-Disclaimer: I did not build this website using my own hand-written code. This website was not made to demonstrate my web design skills; it is a showcase of my experience, education, projects, and personal background that may be of interest to recruiters.
+Disclaimer: I did not write the code to build this website. This is not a demonstration of my web design skills; it is a showcase of my experience, education, projects, and personal background that may be of interest to potential employers.
