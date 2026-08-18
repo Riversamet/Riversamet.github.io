@@ -28,7 +28,7 @@
   --mono:"IBM Plex Mono",ui-monospace,monospace;
 
   --pad:clamp(20px,5vw,64px);
-  --maxw:1120px;
+  --maxw:1180px;
 }
 
 *{box-sizing:border-box}
@@ -101,10 +101,15 @@ header.stuck{border-bottom-color:var(--line)}
 .sociallinks a:hover,.sociallinks button:hover{color:var(--green-deep)}
 .sociallinks svg{width:15px;height:15px;fill:currentColor;flex:none}
 
-.shot{position:relative;width:clamp(230px,32vw,380px);aspect-ratio:1;justify-self:end}
+.shot{position:relative;width:clamp(230px,32vw,380px);aspect-ratio:1;justify-self:center}
 .shot img{
-  width:100%;height:100%;border-radius:50%;object-fit:cover;
-  border:1px solid var(--line);background:var(--wash-2);position:relative;z-index:1;
+  width:100%;height:100%;border-radius:50%;position:relative;z-index:1;
+  border:1px solid var(--line);background:var(--wash-2);
+  /* --- ADJUST FRAMING HERE ---
+     object-position: X Y. Lower the second number to show more of the
+     top of the photo, raise it to show more of the bottom.
+     e.g. "center 40%" moves the image down inside the circle. --- */
+  object-fit:cover;object-position:center 50%;
 }
 .shot::before{
   content:"";position:absolute;inset:-14px;border-radius:50%;
@@ -114,34 +119,46 @@ header.stuck{border-bottom-color:var(--line)}
 section{padding:clamp(60px,8vw,104px) 0;border-top:1px solid var(--line)}
 
 /* ---------- projects ---------- */
-.proj-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(330px,1fr));gap:22px;margin-top:44px}
+.proj-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:22px;margin-top:44px}
+@media (max-width:1040px){.proj-grid{grid-template-columns:repeat(2,1fr)}}
+@media (max-width:700px){.proj-grid{grid-template-columns:1fr}}
+
 .proj{
-  border:1px solid var(--line);border-radius:14px;padding:28px;background:var(--paper);
+  border:1px solid var(--line);border-radius:14px;padding:26px;background:var(--paper);
   display:flex;flex-direction:column;transition:border-color .22s,background .22s,transform .22s;
 }
 .proj:hover{border-color:var(--green);background:var(--wash-2);transform:translateY(-3px)}
-.proj.feature{grid-column:1/-1}
 .proj.draft{border-style:dashed;background:var(--paper-2)}
-.proj-top{display:flex;justify-content:space-between;align-items:baseline;gap:14px;margin-bottom:14px}
-.proj-top span{font-family:var(--mono);font-size:11px;letter-spacing:.1em;text-transform:uppercase;color:var(--muted);white-space:nowrap}
-.proj h3{font-size:22px}
-.proj > p{font-size:15.5px;color:var(--ink-2);margin:0 0 20px}
-.findings{background:var(--wash);border-radius:8px;padding:16px 18px;margin:0 0 20px;list-style:none}
+.proj-top{margin-bottom:12px}
+.proj-top span{
+  font-family:var(--mono);font-size:10.5px;letter-spacing:.1em;text-transform:uppercase;
+  color:var(--muted);display:block;margin-bottom:8px;
+}
+.proj h3{font-size:20px}
+.proj > p{font-size:15px;color:var(--ink-2);margin:0 0 18px}
+.findings{background:var(--wash);border-radius:8px;padding:15px 17px;margin:0 0 18px;list-style:none}
 .findings li{
-  font-size:14.5px;color:var(--green-deep);line-height:1.5;padding-left:16px;
+  font-size:14px;color:var(--green-deep);line-height:1.5;padding-left:15px;
   position:relative;margin-bottom:8px;
 }
 .findings li:last-child{margin-bottom:0}
-.findings li::before{content:"";position:absolute;left:0;top:9px;width:5px;height:5px;border-radius:50%;background:var(--green)}
+.findings li::before{content:"";position:absolute;left:0;top:8px;width:5px;height:5px;border-radius:50%;background:var(--green)}
 .skills-label{
   font-family:var(--mono);font-size:10.5px;letter-spacing:.12em;text-transform:uppercase;
   color:var(--muted);margin:0 0 8px;
 }
-.tags{display:flex;flex-wrap:wrap;gap:7px;margin:0 0 22px;padding:0;list-style:none}
-.tags li{font-family:var(--mono);font-size:11.5px;color:var(--ink-2);border:1px solid var(--line);border-radius:5px;padding:3px 8px;background:var(--paper)}
-.proj-links{margin-top:auto;display:flex;flex-wrap:wrap;gap:18px;font-size:14px;font-weight:500}
-.proj-links a{text-decoration:none;display:inline-flex;align-items:center;gap:6px}
-.proj-links a:hover{text-decoration:underline}
+.tags{display:flex;flex-wrap:wrap;gap:6px;margin:0 0 22px;padding:0;list-style:none}
+.tags li{font-family:var(--mono);font-size:11px;color:var(--ink-2);border:1px solid var(--line);border-radius:5px;padding:3px 7px;background:var(--paper)}
+
+.proj-links{margin-top:auto;display:flex;flex-wrap:wrap;gap:9px}
+.repo-btn{
+  display:inline-flex;align-items:center;gap:7px;font-size:13px;font-weight:500;
+  padding:8px 13px;border-radius:8px;text-decoration:none;
+  border:1px solid var(--line);background:var(--paper);color:var(--ink);
+  transition:border-color .2s,background .2s;
+}
+.repo-btn:hover{border-color:var(--green);background:var(--wash)}
+.repo-btn svg{width:15px;height:15px;flex:none}
 
 /* ---------- experience ---------- */
 .xp{margin-top:44px}
@@ -159,12 +176,21 @@ section{padding:clamp(60px,8vw,104px) 0;border-top:1px solid var(--line)}
 /* ---------- about ---------- */
 #about{background:var(--paper-2)}
 .about-body{max-width:64ch;margin-top:26px}
-.about-body p{margin:0 0 18px;color:var(--ink-2);font-size:17px}
+.about-body p{margin:0 0 18px;color:var(--ink-2)}
 .about-body p:first-child{color:var(--ink);font-size:clamp(17px,1.5vw,19px)}
-.stack{display:grid;grid-template-columns:repeat(auto-fit,minmax(160px,1fr));gap:24px;margin-top:44px}
-.stack h3{font-family:var(--mono);font-size:11.5px;font-weight:500;letter-spacing:.12em;text-transform:uppercase;color:var(--green-deep);margin-bottom:11px}
-.stack ul{list-style:none;margin:0;padding:0;font-size:15px;color:var(--ink-2)}
-.stack li{padding:2.5px 0}
+
+.gallery{display:grid;grid-template-columns:repeat(3,1fr);gap:20px;margin-top:44px}
+@media (max-width:820px){.gallery{grid-template-columns:repeat(2,1fr)}}
+@media (max-width:520px){.gallery{grid-template-columns:1fr}}
+.gallery figure{margin:0}
+.gallery img{
+  width:100%;aspect-ratio:4/3;object-fit:cover;
+  border-radius:12px;border:1px solid var(--line);background:var(--wash-2);
+}
+.gallery figcaption{
+  font-family:var(--mono);font-size:11.5px;letter-spacing:.02em;color:var(--muted);
+  margin-top:10px;line-height:1.5;
+}
 
 /* ---------- contact ---------- */
 #contact{background:var(--wash-2)}
@@ -215,7 +241,7 @@ footer{border-top:1px solid var(--line);background:var(--paper);padding:26px 0;f
       <a href="#about">About</a>
       <a href="#contact">Contact</a>
     </div>
-    <a class="btn btn-solid" href="resume.pdf" download="River_Samet_Resume.pdf">
+    <a class="btn btn-solid" href="resume.pdf" download="River_Samet_Resume.pdf" data-dl>
       <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
       Resume
     </a>
@@ -233,7 +259,7 @@ footer{border-top:1px solid var(--line);background:var(--paper);padding:26px 0;f
       <!-- TAILOR THIS PARAGRAPH per role type. Keep it to 3-4 sentences. -->
       <p class="lede">Computational chemist turned data scientist. For five years I've built machine learning models and automation pipelines for scientific data — training classifiers on experimental results, running thousands of simulations on HPC clusters, and turning datasets with tens of thousands of entries into conclusions a research group can act on. Looking for a full-time data science or analytics role.</p>
       <div class="cta-row">
-        <a class="btn btn-solid" href="resume.pdf" download="River_Samet_Resume.pdf">Download resume</a>
+        <a class="btn btn-solid" href="resume.pdf" download="River_Samet_Resume.pdf" data-dl>Download resume</a>
         <a class="btn btn-ghost" href="resume.pdf" target="_blank" rel="noopener">View in browser</a>
       </div>
       <div class="sociallinks">
@@ -263,130 +289,146 @@ footer{border-top:1px solid var(--line);background:var(--paper);padding:26px 0;f
   <div class="wrap">
     <p class="eyebrow">Projects</p>
     <h2>Selected work</h2>
-    <p class="lede" style="margin-top:16px">Simulation infrastructure, supervised learning on experimental data, deep learning for images, and SQL-to-dashboard analytics. Code and full write-ups are on GitHub.</p>
+    <p class="lede" style="margin-top:16px">Simulation infrastructure, supervised learning on experimental data, deep learning for images, and SQL-to-dashboard analytics. Full write-ups are on GitHub.</p>
 
     <div class="proj-grid">
 
-      <!-- ============================================================
-           PLACEHOLDER CARD for the project you're still adding.
-           1. Fill in the four spots marked below.
-           2. Delete the word "draft" from class="proj feature draft" just
-              below, so the card stops looking like an unfinished draft.
-           3. To move it above QTRAP, cut everything from the opening
-              article tag to its closing tag and paste it above QTRAP's.
-           4. For a normal-width card instead of full-width, also delete
-              the word "feature".
-           ============================================================ -->
-      <article class="proj feature draft">
+      <!-- ---------- 1. QTRAP ---------- -->
+      <article class="proj">
         <div class="proj-top">
-          <h3>Project title goes here</h3>
-          <span>Year &middot; Type</span>
+          <span>2026 &middot; Research tool</span>
+          <h3>QTRAP — automated QM/MM dynamics</h3>
         </div>
-        <p>Two or three sentences on what the question was, what data you used, and what approach you took. Match the tone of the cards below: lead with the problem, not the tool list.</p>
+        <p>A workflow that automates quasiclassical QM/MM dynamics simulations end to end: a ten-step pipeline turning a raw molecular dynamics trajectory into completed runs on an HPC cluster, plus an agentic layer that lets an AI agent drive the whole procedure.</p>
+        <ul class="findings">
+          <li>No automated workflow for quasiclassical QM/MM dynamics had been published before this one.</li>
+          <li>Covers the full path from NetCDF trajectory to per-residue RMSD and partial decomposition analysis.</li>
+          <li>Ships with examples, docs, and scaffolding so it's reproducible by someone who didn't write it.</li>
+        </ul>
+        <p class="skills-label">Skills applied</p>
+        <ul class="tags"><li>Python</li><li>Bash</li><li>HPC / SGE</li><li>pipeline design</li><li>Amber</li><li>Gaussian</li><li>MDTraj</li><li>agentic workflows</li></ul>
+        <div class="proj-links">
+          <a class="repo-btn" href="https://github.com/Riversamet/QTRAP" target="_blank" rel="noopener">
+            <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 .5C5.7.5.5 5.7.5 12c0 5.1 3.3 9.4 7.9 10.9.6.1.8-.2.8-.6v-2c-3.2.7-3.9-1.5-3.9-1.5-.5-1.3-1.3-1.7-1.3-1.7-1.1-.7.1-.7.1-.7 1.2.1 1.8 1.2 1.8 1.2 1 1.8 2.7 1.3 3.4 1 .1-.8.4-1.3.7-1.6-2.6-.3-5.3-1.3-5.3-5.8 0-1.3.5-2.3 1.2-3.1-.1-.3-.5-1.5.1-3.1 0 0 1-.3 3.3 1.2a11.3 11.3 0 0 1 6 0c2.3-1.5 3.3-1.2 3.3-1.2.6 1.6.2 2.8.1 3.1.8.8 1.2 1.8 1.2 3.1 0 4.5-2.7 5.5-5.3 5.8.4.4.8 1.1.8 2.2v3.3c0 .4.2.7.8.6 4.6-1.5 7.9-5.8 7.9-10.9C23.5 5.7 18.3.5 12 .5z"/></svg>
+            View on GitHub
+          </a>
+        </div>
+      </article>
+
+      <!-- ---------- 2. PLACEHOLDER — your next project ----------
+           Fill in the spots below. Then delete the word "draft" from
+           class="proj draft" so it stops rendering as an unfinished card.
+      -->
+      <article class="proj draft">
+        <div class="proj-top">
+          <span>Year &middot; Type</span>
+          <h3>Project title goes here</h3>
+        </div>
+        <p>Two or three sentences: what the question was, what data you used, what approach you took.</p>
         <ul class="findings">
           <li>First key finding — a number if you have one.</li>
           <li>Second key finding.</li>
-          <li>Something that surprised you, or a limitation worth naming.</li>
+          <li>A limitation or surprise worth naming.</li>
         </ul>
         <p class="skills-label">Skills applied</p>
         <ul class="tags"><li>skill one</li><li>skill two</li><li>skill three</li></ul>
         <div class="proj-links">
-          <a href="#">Code &amp; write-up &rarr;</a>
+          <a class="repo-btn" href="#" target="_blank" rel="noopener">
+            <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 .5C5.7.5.5 5.7.5 12c0 5.1 3.3 9.4 7.9 10.9.6.1.8-.2.8-.6v-2c-3.2.7-3.9-1.5-3.9-1.5-.5-1.3-1.3-1.7-1.3-1.7-1.1-.7.1-.7.1-.7 1.2.1 1.8 1.2 1.8 1.2 1 1.8 2.7 1.3 3.4 1 .1-.8.4-1.3.7-1.6-2.6-.3-5.3-1.3-5.3-5.8 0-1.3.5-2.3 1.2-3.1-.1-.3-.5-1.5.1-3.1 0 0 1-.3 3.3 1.2a11.3 11.3 0 0 1 6 0c2.3-1.5 3.3-1.2 3.3-1.2.6 1.6.2 2.8.1 3.1.8.8 1.2 1.8 1.2 3.1 0 4.5-2.7 5.5-5.3 5.8.4.4.8 1.1.8 2.2v3.3c0 .4.2.7.8.6 4.6-1.5 7.9-5.8 7.9-10.9C23.5 5.7 18.3.5 12 .5z"/></svg>
+            View on GitHub
+          </a>
         </div>
       </article>
 
-      <article class="proj feature">
-        <div class="proj-top">
-          <h3>QTRAP — automated QM/MM dynamics workflow</h3>
-          <span>2026 &middot; Research tool</span>
-        </div>
-        <p>Quantum mechanics/molecular mechanics Trajectory Running, Analysis, and Preprocessing: a workflow that automates quasiclassical QM/MM dynamics simulations end to end. It has two parts — a ten-step preprocessing and execution pipeline that turns a raw molecular dynamics trajectory into completed QM/MM runs on an HPC cluster, and an agentic layer that lets an AI agent run the whole procedure interactively or independently with minimal user input.</p>
-        <ul class="findings">
-          <li>As far as I could find, no automated workflow for quasiclassical QM/MM dynamics had been published before this one.</li>
-          <li>Handles the full path from a NetCDF trajectory to per-residue RMSD, reaction-coordinate tracking, and partial decomposition analysis.</li>
-          <li>Ships with source code, worked examples, documentation, and scaffolding so the workflow is reproducible by someone who didn't write it.</li>
-          <li>Designed for femtosecond-scale dynamics in ligand–receptor systems, where the underlying method is powerful but rarely used because the setup cost is so high.</li>
-        </ul>
-        <p class="skills-label">Skills applied</p>
-        <ul class="tags"><li>Python</li><li>Bash</li><li>HPC / SGE scheduling</li><li>pipeline design</li><li>Amber / AmberTools</li><li>Gaussian</li><li>MDTraj</li><li>pytraj</li><li>agentic workflows</li><li>technical documentation</li></ul>
-        <div class="proj-links">
-          <a href="https://github.com/Riversamet/QTRAP" target="_blank" rel="noopener">Code &amp; docs &rarr;</a>
-        </div>
-      </article>
-
+      <!-- ---------- 3. CNN ---------- -->
       <article class="proj">
         <div class="proj-top">
-          <h3>Electrocatalyst performance prediction</h3>
           <span>2026</span>
-        </div>
-        <p>Models electrocatalytic activity for the hydrogen evolution reaction on 545 experimental samples with 13 features, collected by a UCLA chemistry group. Random forests classify catalysts as good or bad; multilayer perceptrons predict overpotential directly. The comparison is the point — two model families, the same data, with cross-validation, hyperparameter tuning, and permutation feature importance used to interrogate both.</p>
-        <ul class="findings">
-          <li>Random forest reached a test F1 of 0.76 after tuning, up from a baseline that scored a perfect 1.00 on training data and 0.69 on validation — textbook overfitting.</li>
-          <li>Plotting a representative decision tree showed why: leaves were splitting on a handful of points. That diagnosis drove the depth and leaf-size tuning.</li>
-          <li>MLP regression reached a test RMSE of 0.11, with errors consistent across train, validation, and test.</li>
-          <li>Co, Ni, Se, V, and reaction time were the most influential features — but the ranking shifted with architecture and scaling, so it's model-dependent rather than a universal chemical truth.</li>
-        </ul>
-        <p class="skills-label">Skills applied</p>
-        <ul class="tags"><li>scikit-learn</li><li>random forests</li><li>MLPs</li><li>5-fold CV</li><li>hyperparameter tuning</li><li>permutation importance</li><li>overfitting diagnosis</li><li>pandas</li></ul>
-        <div class="proj-links">
-          <a href="https://github.com/Riversamet/Electrocatalyst_Performance_Prediction" target="_blank" rel="noopener">Code &amp; write-up &rarr;</a>
-        </div>
-      </article>
-
-      <article class="proj">
-        <div class="proj-top">
           <h3>Traffic sign classification with CNNs</h3>
-          <span>2026</span>
         </div>
-        <p>Four convolutional architectures compared on 6,164 Chinese traffic sign images across 58 classes from Kaggle: a baseline CNN, the same model with augmented training data, and two MobileNetV2 transfer-learning variants with and without trainable base layers. The best model was then shipped as a command-line predictor with a Bash wrapper that returns a labelled image and a confidence level.</p>
+        <p>Four convolutional architectures compared on 6,164 Chinese traffic sign images across 58 classes: a baseline CNN, an augmented version, and two MobileNetV2 transfer-learning variants. The best model ships as a command-line predictor with a Bash wrapper.</p>
         <ul class="findings">
           <li>Both MobileNetV2 variants hit 98% test accuracy; the baseline CNN reached 96%.</li>
-          <li>Data augmentation dropped accuracy to 68% — the baseline was barely overfitting, so augmentation mostly added noise to an already clean signal. A useful reminder that standard fixes need a problem to fix.</li>
-          <li>Confusion matrices showed near-perfect diagonals, meaning errors were spread thinly across classes rather than concentrated in a few confusable signs.</li>
-          <li>Stratified splits preserved the class imbalance, since some sign types are much more common than others.</li>
+          <li>Augmentation dropped accuracy to 68% — the baseline was barely overfitting, so it mostly added noise.</li>
+          <li>Confusion matrices showed errors spread thinly across classes rather than concentrated in confusable signs.</li>
         </ul>
         <p class="skills-label">Skills applied</p>
-        <ul class="tags"><li>TensorFlow</li><li>CNNs</li><li>transfer learning</li><li>data augmentation</li><li>early stopping</li><li>stratified splits</li><li>confusion matrices</li><li>CLI tooling</li></ul>
+        <ul class="tags"><li>TensorFlow</li><li>CNNs</li><li>transfer learning</li><li>data augmentation</li><li>early stopping</li><li>CLI tooling</li></ul>
         <div class="proj-links">
-          <a href="https://github.com/Riversamet/CNN_Image_Classification" target="_blank" rel="noopener">Code &amp; write-up &rarr;</a>
+          <a class="repo-btn" href="https://github.com/Riversamet/CNN_Image_Classification" target="_blank" rel="noopener">
+            <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 .5C5.7.5.5 5.7.5 12c0 5.1 3.3 9.4 7.9 10.9.6.1.8-.2.8-.6v-2c-3.2.7-3.9-1.5-3.9-1.5-.5-1.3-1.3-1.7-1.3-1.7-1.1-.7.1-.7.1-.7 1.2.1 1.8 1.2 1.8 1.2 1 1.8 2.7 1.3 3.4 1 .1-.8.4-1.3.7-1.6-2.6-.3-5.3-1.3-5.3-5.8 0-1.3.5-2.3 1.2-3.1-.1-.3-.5-1.5.1-3.1 0 0 1-.3 3.3 1.2a11.3 11.3 0 0 1 6 0c2.3-1.5 3.3-1.2 3.3-1.2.6 1.6.2 2.8.1 3.1.8.8 1.2 1.8 1.2 3.1 0 4.5-2.7 5.5-5.3 5.8.4.4.8 1.1.8 2.2v3.3c0 .4.2.7.8.6 4.6-1.5 7.9-5.8 7.9-10.9C23.5 5.7 18.3.5 12 .5z"/></svg>
+            View on GitHub
+          </a>
         </div>
       </article>
 
+      <!-- ---------- 4. Olympics ---------- -->
       <article class="proj">
         <div class="proj-top">
-          <h3>120 years of Olympic Games</h3>
           <span>2026</span>
+          <h3>120 years of Olympic Games</h3>
         </div>
-        <p>A full pipeline from raw Kaggle data to published dashboards: 271,116 athlete-event records from 1896 to 2016 loaded into a Neon PostgreSQL database with Python and SQLAlchemy, queried to build purpose-made tables, then visualized in interactive Tableau Public dashboards with written analysis attached to each view.</p>
+        <p>A full pipeline from raw Kaggle data to published dashboards: 271,116 athlete-event records from 1896 to 2016 loaded into a Neon PostgreSQL database, queried into purpose-built tables, then visualized in interactive Tableau Public dashboards.</p>
         <ul class="findings">
-          <li>Four framing questions drove the queries: how the Games expanded, how gender distribution shifted, how national medal counts compare, and how the first five Games differ from the most recent five.</li>
-          <li>Queries range from grouped aggregates to window functions, CTEs, subqueries, and CASE statements — cumulative national medal totals didn't exist in the source data and had to be constructed.</li>
-          <li>Dashboards use filters, calculated fields, parameters, and navigation buttons so a reader can move between the four questions without leaving the workbook.</li>
+          <li>Four framing questions drove the queries: expansion, gender distribution, national medal counts, and first-five versus last-five Games.</li>
+          <li>Queries span window functions, CTEs, subqueries, and CASE statements — cumulative medal totals had to be constructed from scratch.</li>
+          <li>Dashboards use filters, parameters, and navigation buttons so a reader can move between questions in one workbook.</li>
         </ul>
         <p class="skills-label">Skills applied</p>
-        <ul class="tags"><li>SQL</li><li>PostgreSQL</li><li>window functions</li><li>CTEs</li><li>SQLAlchemy</li><li>Tableau</li><li>dashboard design</li><li>cloud databases</li></ul>
+        <ul class="tags"><li>SQL</li><li>PostgreSQL</li><li>window functions</li><li>CTEs</li><li>SQLAlchemy</li><li>Tableau</li><li>dashboard design</li></ul>
         <div class="proj-links">
-          <a href="https://github.com/Riversamet/Olympics_Visualization" target="_blank" rel="noopener">Code &rarr;</a>
-          <a href="https://public.tableau.com/app/profile/river.samet/viz/PortfolioProjectTableau_17869074800600/GrowthoftheOlympicGames" target="_blank" rel="noopener">Live dashboards &rarr;</a>
+          <a class="repo-btn" href="https://github.com/Riversamet/Olympics_Visualization" target="_blank" rel="noopener">
+            <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 .5C5.7.5.5 5.7.5 12c0 5.1 3.3 9.4 7.9 10.9.6.1.8-.2.8-.6v-2c-3.2.7-3.9-1.5-3.9-1.5-.5-1.3-1.3-1.7-1.3-1.7-1.1-.7.1-.7.1-.7 1.2.1 1.8 1.2 1.8 1.2 1 1.8 2.7 1.3 3.4 1 .1-.8.4-1.3.7-1.6-2.6-.3-5.3-1.3-5.3-5.8 0-1.3.5-2.3 1.2-3.1-.1-.3-.5-1.5.1-3.1 0 0 1-.3 3.3 1.2a11.3 11.3 0 0 1 6 0c2.3-1.5 3.3-1.2 3.3-1.2.6 1.6.2 2.8.1 3.1.8.8 1.2 1.8 1.2 3.1 0 4.5-2.7 5.5-5.3 5.8.4.4.8 1.1.8 2.2v3.3c0 .4.2.7.8.6 4.6-1.5 7.9-5.8 7.9-10.9C23.5 5.7 18.3.5 12 .5z"/></svg>
+            View on GitHub
+          </a>
+          <a class="repo-btn" href="https://public.tableau.com/app/profile/river.samet/viz/PortfolioProjectTableau_17869074800600/GrowthoftheOlympicGames" target="_blank" rel="noopener">
+            <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M11.25 3h1.5v2.6h2.6v1.5h-2.6v2.6h-1.5V7.1H8.65V5.6h2.6V3zM4.6 8.4h1.2v2.1h2.1v1.2H5.8v2.1H4.6v-2.1H2.5v-1.2h2.1V8.4zm13.6 0h1.2v2.1h2.1v1.2h-2.1v2.1h-1.2v-2.1h-2.1v-1.2h2.1V8.4zM11.25 14.3h1.5v2.6h2.6v1.5h-2.6V21h-1.5v-2.6H8.65v-1.5h2.6v-2.6z"/></svg>
+            View on Tableau
+          </a>
         </div>
       </article>
 
+      <!-- ---------- 5. Electrocatalyst ---------- -->
       <article class="proj">
         <div class="proj-top">
-          <h3>Cardiovascular risk factor visualization</h3>
-          <span>2025</span>
+          <span>2026</span>
+          <h3>Electrocatalyst performance prediction</h3>
         </div>
-        <p>Exploratory analysis of patient medical data looking for relationships between physiological and behavioral features and the presence of cardiovascular disease. Covers feature engineering, outlier removal, reshaping with pandas, and two complementary views: a categorical plot of risk levels and a correlation heatmap.</p>
+        <p>Models electrocatalytic activity for the hydrogen evolution reaction on 545 experimental samples with 13 features. Random forests classify catalysts as good or bad; multilayer perceptrons predict overpotential directly. Two model families, same data, interrogated the same way.</p>
         <ul class="findings">
-          <li>After removing implausible records, no single feature correlated strongly with disease presence — the strongest sat between 0.17 and 0.33.</li>
-          <li>Systolic blood pressure, cholesterol, age, and weight led that ranking; smoking, alcohol use, and activity level showed little to none.</li>
-          <li>The two views disagreed, and the write-up works out why: the categorical plot excludes continuous variables and was built before outlier removal.</li>
-          <li>Correlation this weak doesn't support causal claims about a condition with this many interacting causes, and the analysis says so instead of overreaching.</li>
+          <li>Random forest reached a test F1 of 0.76 after tuning, up from a baseline scoring 1.00 on training and 0.69 on validation — textbook overfitting.</li>
+          <li>Plotting a representative tree showed leaves splitting on a handful of points, which drove the depth and leaf-size tuning.</li>
+          <li>MLP regression reached a test RMSE of 0.11, with errors consistent across all three splits.</li>
         </ul>
         <p class="skills-label">Skills applied</p>
-        <ul class="tags"><li>pandas</li><li>seaborn</li><li>feature engineering</li><li>data cleaning</li><li>outlier handling</li><li>correlation analysis</li><li>matplotlib</li></ul>
+        <ul class="tags"><li>scikit-learn</li><li>random forests</li><li>MLPs</li><li>5-fold CV</li><li>hyperparameter tuning</li><li>permutation importance</li></ul>
         <div class="proj-links">
-          <a href="https://github.com/Riversamet/Medical_Data_Visualizer" target="_blank" rel="noopener">Code &amp; write-up &rarr;</a>
+          <a class="repo-btn" href="https://github.com/Riversamet/Electrocatalyst_Performance_Prediction" target="_blank" rel="noopener">
+            <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 .5C5.7.5.5 5.7.5 12c0 5.1 3.3 9.4 7.9 10.9.6.1.8-.2.8-.6v-2c-3.2.7-3.9-1.5-3.9-1.5-.5-1.3-1.3-1.7-1.3-1.7-1.1-.7.1-.7.1-.7 1.2.1 1.8 1.2 1.8 1.2 1 1.8 2.7 1.3 3.4 1 .1-.8.4-1.3.7-1.6-2.6-.3-5.3-1.3-5.3-5.8 0-1.3.5-2.3 1.2-3.1-.1-.3-.5-1.5.1-3.1 0 0 1-.3 3.3 1.2a11.3 11.3 0 0 1 6 0c2.3-1.5 3.3-1.2 3.3-1.2.6 1.6.2 2.8.1 3.1.8.8 1.2 1.8 1.2 3.1 0 4.5-2.7 5.5-5.3 5.8.4.4.8 1.1.8 2.2v3.3c0 .4.2.7.8.6 4.6-1.5 7.9-5.8 7.9-10.9C23.5 5.7 18.3.5 12 .5z"/></svg>
+            View on GitHub
+          </a>
+        </div>
+      </article>
+
+      <!-- ---------- 6. Cardiovascular ---------- -->
+      <article class="proj">
+        <div class="proj-top">
+          <span>2025</span>
+          <h3>Cardiovascular risk factor visualization</h3>
+        </div>
+        <p>Exploratory analysis of patient medical data looking for relationships between physiological and behavioral features and cardiovascular disease. Feature engineering, outlier removal, and two complementary views: a categorical plot and a correlation heatmap.</p>
+        <ul class="findings">
+          <li>After removing implausible records, no single feature correlated strongly — the strongest sat between 0.17 and 0.33.</li>
+          <li>Systolic blood pressure, cholesterol, age, and weight led; smoking, alcohol, and activity showed little to none.</li>
+          <li>The two views disagreed, and the write-up works out why rather than picking the flattering one.</li>
+        </ul>
+        <p class="skills-label">Skills applied</p>
+        <ul class="tags"><li>pandas</li><li>seaborn</li><li>feature engineering</li><li>data cleaning</li><li>outlier handling</li><li>correlation analysis</li></ul>
+        <div class="proj-links">
+          <a class="repo-btn" href="https://github.com/Riversamet/Medical_Data_Visualizer" target="_blank" rel="noopener">
+            <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 .5C5.7.5.5 5.7.5 12c0 5.1 3.3 9.4 7.9 10.9.6.1.8-.2.8-.6v-2c-3.2.7-3.9-1.5-3.9-1.5-.5-1.3-1.3-1.7-1.3-1.7-1.1-.7.1-.7.1-.7 1.2.1 1.8 1.2 1.8 1.2 1 1.8 2.7 1.3 3.4 1 .1-.8.4-1.3.7-1.6-2.6-.3-5.3-1.3-5.3-5.8 0-1.3.5-2.3 1.2-3.1-.1-.3-.5-1.5.1-3.1 0 0 1-.3 3.3 1.2a11.3 11.3 0 0 1 6 0c2.3-1.5 3.3-1.2 3.3-1.2.6 1.6.2 2.8.1 3.1.8.8 1.2 1.8 1.2 3.1 0 4.5-2.7 5.5-5.3 5.8.4.4.8 1.1.8 2.2v3.3c0 .4.2.7.8.6 4.6-1.5 7.9-5.8 7.9-10.9C23.5 5.7 18.3.5 12 .5z"/></svg>
+            View on GitHub
+          </a>
         </div>
       </article>
 
@@ -464,26 +506,30 @@ footer{border-top:1px solid var(--line);background:var(--paper);padding:26px 0;f
     <h2>Chemistry taught me<br>to distrust a clean result.</h2>
     <div class="about-body">
       <p>Experimental data is noisy, expensive, and usually too small for the model you'd like to use. Five years of computational chemistry taught me to be honest about what that data can actually support — and that a test metric which looks too good is the start of an investigation, not the end of one.</p>
-      <p>I'm looking for data science and analytics work where the questions are genuinely open. Based in Santa Monica.</p>
+      <p>Outside of work, I'm usually somewhere along the California coast. Based in Santa Monica.</p>
     </div>
 
-    <div class="stack">
-      <div>
-        <h3>Languages</h3>
-        <ul><li>Python</li><li>SQL</li><li>Bash / Linux</li><li>Mathematica</li></ul>
-      </div>
-      <div>
-        <h3>Machine learning</h3>
-        <ul><li>scikit-learn</li><li>TensorFlow</li><li>Random forests</li><li>Neural nets (MLP, CNN)</li><li>Cross-validation</li><li>Hyperparameter tuning</li></ul>
-      </div>
-      <div>
-        <h3>Data &amp; analysis</h3>
-        <ul><li>pandas</li><li>NumPy</li><li>PostgreSQL</li><li>Tableau</li><li>matplotlib / seaborn</li><li>SQLAlchemy</li></ul>
-      </div>
-      <div>
-        <h3>Scientific computing</h3>
-        <ul><li>HPC (SGE clusters)</li><li>Amber / AmberTools</li><li>Gaussian / ORCA</li><li>MDTraj / pytraj</li><li>RDKit</li><li>PyMOL / Chimera</li></ul>
-      </div>
+    <!-- ================= PHOTO GALLERY =================
+         Add your images to the repo, then set the src and the caption below.
+         Any figure whose image is missing hides itself automatically, so
+         nothing breaks while you're still deciding what to use.
+         Landscape photos work best (they're cropped to 4:3).
+         To add a fourth, copy one of the three blocks below and paste it
+         after the last one.
+    -->
+    <div class="gallery">
+      <figure>
+        <img src="life-1.jpg" alt="">
+        <figcaption>Caption for the first photo.</figcaption>
+      </figure>
+      <figure>
+        <img src="life-2.jpg" alt="">
+        <figcaption>Caption for the second photo.</figcaption>
+      </figure>
+      <figure>
+        <img src="life-3.jpg" alt="">
+        <figcaption>Caption for the third photo.</figcaption>
+      </figure>
     </div>
   </div>
 </section>
@@ -500,7 +546,7 @@ footer{border-top:1px solid var(--line);background:var(--paper);padding:26px 0;f
     <div class="contact-actions">
       <a class="btn btn-solid" href="mailto:riversamet@gmail.com">Send an email</a>
       <button class="btn btn-ghost" type="button" id="copybtn">Copy address</button>
-      <a class="btn btn-ghost" href="resume.pdf" download="River_Samet_Resume.pdf">Download resume</a>
+      <a class="btn btn-ghost" href="resume.pdf" download="River_Samet_Resume.pdf" data-dl>Download resume</a>
       <span class="copied" id="copied">Copied</span>
     </div>
 
@@ -545,12 +591,39 @@ const spy=new IntersectionObserver(es=>es.forEach(e=>{
 }),{rootMargin:'-45% 0px -50% 0px'});
 document.querySelectorAll('section[id]').forEach(s=>spy.observe(s));
 
+/* copy email */
 const cbtn=document.getElementById('copybtn'), cmsg=document.getElementById('copied');
 cbtn.addEventListener('click',async()=>{
   try{ await navigator.clipboard.writeText('riversamet@gmail.com'); }
   catch(e){ const t=document.createElement('textarea'); t.value='riversamet@gmail.com';
     document.body.appendChild(t); t.select(); document.execCommand('copy'); t.remove(); }
   cmsg.classList.add('on'); setTimeout(()=>cmsg.classList.remove('on'),1800);
+});
+
+/* force the resume to download rather than open in the PDF viewer */
+document.querySelectorAll('a[data-dl]').forEach(a=>{
+  a.addEventListener('click',async ev=>{
+    if(location.protocol==='file:') return;
+    ev.preventDefault();
+    const url=a.getAttribute('href');
+    const name=a.getAttribute('download')||'resume.pdf';
+    try{
+      const res=await fetch(url);
+      if(!res.ok) throw new Error('fetch failed');
+      const blob=await res.blob();
+      const obj=URL.createObjectURL(blob);
+      const tmp=document.createElement('a');
+      tmp.href=obj; tmp.download=name;
+      document.body.appendChild(tmp); tmp.click(); tmp.remove();
+      setTimeout(()=>URL.revokeObjectURL(obj),2000);
+    }catch(err){ window.open(url,'_blank','noopener'); }
+  });
+});
+
+/* hide gallery figures whose photo hasn't been added yet */
+document.querySelectorAll('.gallery img').forEach(img=>{
+  img.addEventListener('error',()=>{ const f=img.closest('figure'); if(f) f.style.display='none'; });
+  if(img.complete && img.naturalWidth===0){ const f=img.closest('figure'); if(f) f.style.display='none'; }
 });
 </script>
 </body>
