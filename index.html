@@ -338,25 +338,21 @@ footer{border-top:1px solid var(--line);background:var(--paper);padding:26px 0;f
         </div>
       </article>
 
-      <!-- ---------- 2. PLACEHOLDER — your next project ----------
-           Fill in the spots below. Then delete the word "draft" from
-           class="proj draft" so it stops rendering as an unfinished card.
-      -->
+      <!-- ---------- 2. RAG + fine-tune ------------>
       <article class="proj draft">
         <div class="proj-top">
           <span>Year &middot; Type</span>
-          <h3>Project title goes here</h3>
+          <h3>AI Procedural Assistant: RAG With LLM Fine-Tuning</h3>
         </div>
-        <p>Two or three sentences: what the question was, what data you used, what approach you took.</p>
+        <p>A RAG pipeline is developed to allow employees to efficiently acquire information from company-specific SOPs and related in-domain material via a secure, offline-capable application. Altogether, this workflow produces valid responses to user-generated questions related to the SOPs provided, with minimal hallucination or over-refusal.</p>
         <ul class="findings">
-          <li>First key finding — a number if you have one.</li>
-          <li>Second key finding.</li>
-          <li>A limitation or surprise worth naming.</li>
+          <li>sqlite-vec and multi-qa-MiniLM-L6-cos-v1 used for retrieval; Qwen2.5-1.5B base model fine-tuned using distillation with LoRA</li>
+          <li>Recall@6 = 0.90 from retrieval; best-performing LLM achieved 82% accuracy on SOP-based questions with minimal hallucination</li>
         </ul>
         <p class="skills-label">Skills applied</p>
-        <ul class="tags"><li>skill one</li><li>skill two</li><li>skill three</li></ul>
+        <ul class="tags"><li>Python</li><li>LLM fine-tuning (distillation + LoRA)</li><li>RAG</li><li>sqlite-vec</li><li>transformers</li></ul>
         <div class="proj-links">
-          <a class="repo-btn" href="#" target="_blank" rel="noopener">
+          <a class="repo-btn" href="https://github.com/Riversamet/AI_Procedural_Assistant" target="_blank" rel="noopener">
             <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 .5C5.7.5.5 5.7.5 12c0 5.1 3.3 9.4 7.9 10.9.6.1.8-.2.8-.6v-2c-3.2.7-3.9-1.5-3.9-1.5-.5-1.3-1.3-1.7-1.3-1.7-1.1-.7.1-.7.1-.7 1.2.1 1.8 1.2 1.8 1.2 1 1.8 2.7 1.3 3.4 1 .1-.8.4-1.3.7-1.6-2.6-.3-5.3-1.3-5.3-5.8 0-1.3.5-2.3 1.2-3.1-.1-.3-.5-1.5.1-3.1 0 0 1-.3 3.3 1.2a11.3 11.3 0 0 1 6 0c2.3-1.5 3.3-1.2 3.3-1.2.6 1.6.2 2.8.1 3.1.8.8 1.2 1.8 1.2 3.1 0 4.5-2.7 5.5-5.3 5.8.4.4.8 1.1.8 2.2v3.3c0 .4.2.7.8.6 4.6-1.5 7.9-5.8 7.9-10.9C23.5 5.7 18.3.5 12 .5z"/></svg>
             View on GitHub
           </a>
