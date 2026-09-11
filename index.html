@@ -346,8 +346,8 @@ footer{border-top:1px solid var(--line);background:var(--paper);padding:26px 0;f
         </div>
         <p>A RAG pipeline is developed to allow employees to efficiently acquire information from company-specific SOPs and related in-domain material via a secure, offline-capable application. Reliable responses are consistently generated using this pipeline with minimal hallucination and over-refusal.</p>
         <ul class="findings">
-          <li>sqlite-vec and multi-qa-MiniLM-L6-cos-v1 used for retrieval; Qwen2.5-1.5B base model fine-tuned using distillation with LoRA</li>
-          <li>Recall@6 = 0.90 from retrieval; best-performing LLM achieved 82% accuracy on SOP-based questions with minimal hallucination</li>
+          <li>sqlite-vec and multi-qa-MiniLM-L6-cos-v1 used for retrieval; Qwen2.5-1.5B base model fine-tuned using distillation with LoRA (Hugging Face PEFT/TRL) on AWS SageMaker with data staged in S3</li>
+          <li>Recall@6 = 0.90 from retrieval; best-performing LLM achieved over 80% accuracy on SOP-based questions with minimal hallucination</li>
         </ul>
         <p class="skills-label">Skills applied</p>
         <ul class="tags"><li>LLM fine-tuning (distillation/LoRA)</li><li>RAG</li><li>Python</li><li>sqlite-vec</li><li>transformers</li></ul>
