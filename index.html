@@ -281,7 +281,7 @@ footer{border-top:1px solid var(--line);background:var(--paper);padding:26px 0;f
         <img class="name-logo" src="logo.png" alt="">
         <h1>River Samet</h1>
       </div>
-      <p class="lede">Hi! My name is River Samet and I'm an aspiring data scientist currently living in Santa Monica, CA. I recently received my Master of Science in Chemistry with a computational emphasis from UCLA. During this program, I learned how to automate complex processes by building Python and Bash-based workflows, predict chemical reactivity trends using machine learning, and gather valuable research insights from large, messy datasets acquired by running computational jobs on remote HPC clusters. This program, along with an assortment of personal data science projects that I've designed and published on GitHub, has prepared me for upcoming career opportunities in data science, which I am currently searching for!</p>
+      <p class="lede">Hi! My name is River Samet and I'm an aspiring data scientist currently living in Santa Monica, CA. I recently received my Master of Science in Chemistry with a computational emphasis from UCLA. During this program, I learned how to automate complex processes by building Python and Bash-based workflows, predict chemical reactivity trends using machine learning, and gather valuable research insights from large, messy datasets acquired by running computational jobs on remote HPC clusters. This program, along with an assortment of personal data science projects that I've designed and published on GitHub, has prepared me for upcoming career opportunities in data science!</p>
       <div class="cta-row">
         <a class="btn btn-solid" href="resume.pdf" download="River_Samet_Resume.pdf" data-dl>Download resume</a>
         <a class="btn btn-ghost" href="resume.pdf" target="_blank" rel="noopener">View in browser</a>
@@ -325,8 +325,8 @@ footer{border-top:1px solid var(--line);background:var(--paper);padding:26px 0;f
         </div>
         <p>Quantum mechanics/molecular mechanics Trajectory Running, Analysis, and Preprocessing. Full workflow included with source code, examples, documentation, and scaffolding (scripts + documentation) to allow an AI agent to run the entire workflow.</p>
         <ul class="findings">
-          <li>First-ever publicly available end-to-end quasiclassical QM/MM dynamics workflow (Python and Bash source code); includes in-depth examples and documentation, as well as proper scaffolding required for safe agentic workflow on remote HPC cluster</li>
-          <li>Cuts time required to preprocess, run, and analyze simulations down from weeks to just hours</li>
+          <li>First-ever publicly available end-to-end quasiclassical QM/MM dynamics workflow (Python and Bash source code); includes permission-scoped tools and documentation that let an AI agent run the full workflow on a remote HPC cluster with minimal input</li>
+          <li>Reduces hands-on time required to preprocess, run, and analyze simulations from weeks to just hours</li>
         </ul>
         <p class="skills-label">Skills applied</p>
         <ul class="tags"><li>Python</li><li>Bash</li><li>agentic workflows</li><li>data management + cleaning</li><li>workflow/package design</li></ul>
@@ -344,13 +344,13 @@ footer{border-top:1px solid var(--line);background:var(--paper);padding:26px 0;f
           <span>RAG &middot; LLM fine-tuning</span>
           <h3>AI Procedural Assistant</h3>
         </div>
-        <p>A RAG pipeline is developed to allow employees to efficiently acquire information from company-specific SOPs and related in-domain material via a secure, offline-capable application. Reliable responses are consistently generated using this pipeline with minimal hallucination and over-refusal.</p>
+        <p>I devloped an offline-capable RAG pipeline to answer employee questions from company SOPs and related in-domain material within a secure local environment, reducing time supervisors spend on procedural questions.</p>
         <ul class="findings">
-          <li>sqlite-vec and multi-qa-MiniLM-L6-cos-v1 used for retrieval; Qwen2.5-1.5B base model fine-tuned using distillation with LoRA (Hugging Face PEFT/TRL) on AWS SageMaker with data staged in S3</li>
-          <li>Recall@6 = 0.90 from retrieval; best-performing LLM achieved over 80% accuracy on SOP-based questions with minimal hallucination</li>
+          <li>Retrieval: sqlite-vec vector store with multi-qa-MiniLM-L6-cos-v1 embeddings (Recall@6 = 0.90); generation: Qwen2.5-1.5B fine-tuned by knowledge distillation with LoRA (Hugging Face PEFT/TRL) on AWS SageMaker with data staged in S3</li>
+          <li>Best fine-tuned model reached over 80% accuracy on a 55-question held-out SOP test set with minimal hallucination and over-refusal, and 90% accuracy on out-of-SOP in-domain questions (vs. 45% for the base model)</li>
         </ul>
         <p class="skills-label">Skills applied</p>
-        <ul class="tags"><li>LLM fine-tuning (distillation/LoRA)</li><li>RAG</li><li>Python</li><li>sqlite-vec</li><li>transformers</li></ul>
+        <ul class="tags"><li>LLM fine-tuning (distillation/LoRA)</li><li>RAG</li><li>Python</li><li>sqlite-vec</li><li>Hugging Face Transformers</li></ul>
         <div class="proj-links">
           <a class="repo-btn" href="https://github.com/Riversamet/AI_Procedural_Assistant" target="_blank" rel="noopener">
             <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 .5C5.7.5.5 5.7.5 12c0 5.1 3.3 9.4 7.9 10.9.6.1.8-.2.8-.6v-2c-3.2.7-3.9-1.5-3.9-1.5-.5-1.3-1.3-1.7-1.3-1.7-1.1-.7.1-.7.1-.7 1.2.1 1.8 1.2 1.8 1.2 1 1.8 2.7 1.3 3.4 1 .1-.8.4-1.3.7-1.6-2.6-.3-5.3-1.3-5.3-5.8 0-1.3.5-2.3 1.2-3.1-.1-.3-.5-1.5.1-3.1 0 0 1-.3 3.3 1.2a11.3 11.3 0 0 1 6 0c2.3-1.5 3.3-1.2 3.3-1.2.6 1.6.2 2.8.1 3.1.8.8 1.2 1.8 1.2 3.1 0 4.5-2.7 5.5-5.3 5.8.4.4.8 1.1.8 2.2v3.3c0 .4.2.7.8.6 4.6-1.5 7.9-5.8 7.9-10.9C23.5 5.7 18.3.5 12 .5z"/></svg>
@@ -365,9 +365,9 @@ footer{border-top:1px solid var(--line);background:var(--paper);padding:26px 0;f
           <span>Machine learning &middot; CNNs</span>
           <h3>CNN Image Classification</h3>
         </div>
-        <p>Multiple convolutional neural network architectures are used to classify Chinese traffic sign images imported from a Kaggle dataset. Results are compared and analyzed, and the best-performing model implemented in a user-friendly Python execution script.</p>
+        <p>I used custom convolutional neural network architectures (with/without data augmentation) and MobileNetV2 transfer learning models to classify 6,164 Chinese traffic sign images (58 classes). I packaged the best-performing model as a command-line tool that reports predictions and confidence for user-supplied images.</p>
         <ul class="findings">
-          <li>Transfer learning yielded models giving the best results (~98% accuracy on test set data), while data augmentation set back model performance</li>
+          <li>Fine-tuned MobileNetV2 reached ~98% test accuracy vs. 96% for the best custom CNN</li>
           <li>Confusion matrices showed errors spread thinly across classes rather than concentrated in confusable signs</li>
         </ul>
         <p class="skills-label">Skills applied</p>
@@ -413,7 +413,7 @@ footer{border-top:1px solid var(--line);background:var(--paper);padding:26px 0;f
         </div>
         <p>This project is used to predict electrocatalytic activity in the hydrogen evolution reaction through classification with random forests and regression with multilayer perceptrons.</p>
         <ul class="findings">
-          <li>Random forest classification reached a test F1 of 0.76 after tuning, with similar scores across the other two splits; tuning minimized overfitting by narrowing the F1 training-validation gap</li>
+          <li>Random forest classification reached a test F1 of 0.76 (0.78 on an alternative split); tuning closed the train/val F1 gap from 0.31 to 0.09, minimizing overfitting</li>
           <li>Multilayer perceptron (MLP) regression reached a test RMSE of 0.11, with errors consistent across all three splits</li>
         </ul>
         <p class="skills-label">Skills applied</p>
@@ -568,7 +568,7 @@ footer{border-top:1px solid var(--line);background:var(--paper);padding:26px 0;f
   <div class="wrap">
     <p class="eyebrow">Contact</p>
     <h2>Let's talk.</h2>
-    <p class="lede" style="margin-top:16px">Open to full-time data science and analytics roles, in Los Angeles or remote. Email is the best way to reach me.</p>
+    <p class="lede" style="margin-top:16px">Open to full-time data science and analytics, applied ML, and ML engineering roles in Los Angeles/Orange County or remote. Email is the best way to reach me.</p>
 
     <p style="margin:34px 0 0"><a class="big-mail" href="mailto:riversamet@gmail.com">riversamet@gmail.com</a></p>
 
