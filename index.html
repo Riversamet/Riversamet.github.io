@@ -323,7 +323,7 @@ footer{border-top:1px solid var(--line);background:var(--paper);padding:26px 0;f
           <span>Pipeline automation &middot; Agentic workflows</span>
           <h3>QTRAP</h3>
         </div>
-        <p>I built the first-ever publicly available end-to-end quasiclassical QM/MM dynamics workflow (Python and Bash source code) called Quantum mechanics/molecular mechanics Trajectory Running, Analysis, and Preprocessing (QTRAP). The full workflow included with source code, examples, and documentation.</p>
+        <p>I built QTRAP (Quantum mechanics/molecular mechanics Trajectory Running, Analysis, and Preprocessing), the first publicly available end-to-end quasiclassical QM/MM dynamics workflow. The full workflow is included here with Python and Bash source code, worked examples, and documentation.</p>
         <ul class="findings">
           <li>Includes permission-scoped tools and documentation that let an AI agent run the full workflow on a remote HPC cluster with minimal input</li>
           <li>Reduces hands-on time required to preprocess, run, and analyze simulations from weeks to just hours</li>
@@ -346,11 +346,11 @@ footer{border-top:1px solid var(--line);background:var(--paper);padding:26px 0;f
         </div>
         <p>I developed an offline-capable RAG pipeline to answer employee questions from company SOPs and related in-domain material within a secure local environment, reducing time supervisors spend on procedural questions.</p>
         <ul class="findings">
-          <li>Retrieval: sqlite-vec vector store with multi-qa-MiniLM-L6-cos-v1 embeddings (Recall@6 = 0.90); generation: Qwen2.5-1.5B fine-tuned by knowledge distillation with LoRA (Hugging Face PEFT/TRL) on AWS SageMaker with data staged in S3</li>
-          <li>Best fine-tuned model reached over 80% accuracy on a 55-question held-out SOP test set with minimal hallucination and over-refusal, and 90% accuracy on out-of-SOP in-domain questions (vs. 45% for the base model)</li>
+          <li>Retrieval: sqlite-vec vector store with multi-qa-MiniLM-L6-cos-v1 embeddings (Recall@6 = 0.90); generation: Qwen2.5-1.5B fine-tuned with LoRA (Hugging Face PEFT/TRL) on AWS SageMaker</li>
+          <li>Best fine-tuned model reached over 80% accuracy on a 55-question held-out SOP test set, and 90% accuracy on out-of-SOP in-domain questions (vs. 45% for the base model)</li>
         </ul>
         <p class="skills-label">Skills applied</p>
-        <ul class="tags"><li>LLM fine-tuning (distillation/LoRA)</li><li>RAG</li><li>Python</li><li>SageMaker</li><li>Hugging Face Transformers</li></ul>
+        <ul class="tags"><li>LLM fine-tuning (LoRA)</li><li>RAG</li><li>Python</li><li>SageMaker</li><li>Hugging Face Transformers</li></ul>
         <div class="proj-links">
           <a class="repo-btn" href="https://github.com/Riversamet/AI_Procedural_Assistant" target="_blank" rel="noopener">
             <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 .5C5.7.5.5 5.7.5 12c0 5.1 3.3 9.4 7.9 10.9.6.1.8-.2.8-.6v-2c-3.2.7-3.9-1.5-3.9-1.5-.5-1.3-1.3-1.7-1.3-1.7-1.1-.7.1-.7.1-.7 1.2.1 1.8 1.2 1.8 1.2 1 1.8 2.7 1.3 3.4 1 .1-.8.4-1.3.7-1.6-2.6-.3-5.3-1.3-5.3-5.8 0-1.3.5-2.3 1.2-3.1-.1-.3-.5-1.5.1-3.1 0 0 1-.3 3.3 1.2a11.3 11.3 0 0 1 6 0c2.3-1.5 3.3-1.2 3.3-1.2.6 1.6.2 2.8.1 3.1.8.8 1.2 1.8 1.2 3.1 0 4.5-2.7 5.5-5.3 5.8.4.4.8 1.1.8 2.2v3.3c0 .4.2.7.8.6 4.6-1.5 7.9-5.8 7.9-10.9C23.5 5.7 18.3.5 12 .5z"/></svg>
@@ -386,10 +386,10 @@ footer{border-top:1px solid var(--line);background:var(--paper);padding:26px 0;f
           <span>Data visualization &middot; Tableau &middot; SQL</span>
           <h3>Olympics Visualization</h3>
         </div>
-        <p>I loaded 120 years of Olympic results (Kaggle) into a Neon PostgreSQL database, wrote the SQL to reshape the data for specific overarching questions I had about the dataset, and built interactive Tableau dashboards to present what I found. Key findings are annotated on the dashboards; the README covers the rest of the analysis.</p>
+        <p>I loaded 120 years of Olympic results (Kaggle) into a Neon PostgreSQL database, wrote the SQL to reshape the data for overarching questions I had about the dataset, and built interactive Tableau dashboards to present what I found. Key findings are annotated on the dashboards; the README covers the rest of the analysis.</p>
         <ul class="findings">
           <li>Reshaped the data with CTEs, window functions, and multi-table joins to compare countries, sports, and eras</li>
-          <li>Tableau dashboards present findings clearly and succinctly, with interactive filters and navigation</li>
+          <li>Tableau dashboards use interactive filters and navigation, with findings written directly onto each dashboard</li>
         </ul>
         <p class="skills-label">Skills applied</p>
         <ul class="tags"><li>Tableau</li><li>SQL</li><li>PostgreSQL</li><li>dashboard design</li><li>SQLAlchemy</li></ul>
@@ -435,7 +435,7 @@ footer{border-top:1px solid var(--line);background:var(--paper);padding:26px 0;f
         <p>I cleaned and reshaped a cardiovascular-health dataset (freeCodeCamp) and built categorical plots and a correlation heatmap with pandas, Matplotlib, and seaborn to determine which measurements track with disease.</p>
         <ul class="findings">
           <li>No single feature correlated strongly with cardiovascular disease presence; the strongest sat between 0.17 and 0.33</li>
-          <li>Systolic blood pressure, cholesterol, age, and weight led in correlation</li>
+          <li>Systolic blood pressure, cholesterol, age, and weight showed the strongest associations with cardiovascular disease presence</li>
         </ul>
         <p class="skills-label">Skills applied</p>
         <ul class="tags"><li>Python</li><li>pandas</li><li>seaborn</li><li>data cleaning</li><li>correlation analysis</li></ul>
@@ -455,7 +455,7 @@ footer{border-top:1px solid var(--line);background:var(--paper);padding:26px 0;f
 <section id="experience" class="rv">
   <div class="wrap">
     <p class="eyebrow">Experience</p>
-    <h2>Previous/Current Roles</h2>
+    <h2>Roles to Date</h2>
 
     <div class="xp">
       <div class="xp-row">
